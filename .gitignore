@@ -1,0 +1,14 @@
+.DS_Store
+._*
+
+application/cache/
+!application/cache/index.html
+!application/cache/.htaccess
+
+application/logs/
+!application/logs/index.html
+!application/logs/.htaccess
+
+assets/img/*
+application/config/production/*
+application/config/development/*

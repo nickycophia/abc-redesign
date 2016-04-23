@@ -1,0 +1,540 @@
+html{
+  height:100%;
+}
+body{
+	width: 640px;
+	height: 1136px;
+	overflow: hidden;
+	background: #fafafa;
+	position: relative;
+}
+.lightbox_area{
+	position: fixed;
+    width: 640px;
+    min-height: 100%;
+    z-index: 11;
+    background: rgba(0,0,0,0.4);
+    /*display: none;*/
+}
+.lightbox{
+	margin: 320px auto 0 auto;
+	width: 460px;
+	background: rgba(253,253,253,0.95);
+	border-radius: 20px;
+	text-align: center;
+}
+.lightbox_topic{
+	padding: 40px 30px;
+}
+.lightbox_name{
+	color: #030303;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+	font-size: 34px;
+	padding: 0 0 26px 0;
+}
+.lightbox_txt{
+	min-height: 88px;
+	color: #030303;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+	font-size: 26px;
+}
+.lightbox_btn{
+	border-top: #b3b3b3 1px solid;
+}
+.lightbox_btn a{
+	display: block;
+	padding: 20px 0;
+	color: #0076ff;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+	font-size: 34px;
+}
+header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 640px;
+	height: 88px;
+	background: url(../img/header@2x.png) repeat-x center top;
+	z-index: 10;
+}
+.header{
+	text-align: center;
+	position: relative;
+}
+.header_name{
+	color: #fff;
+	font-size: 32px;
+	line-height: 88px;
+	font-family: 'PingFangTC-Medium',微軟正黑體;
+	font-weight: bold;
+}
+.header_btn{
+	position: relative;
+}
+.main{
+	width: 100%;
+	position: relative;
+	top: 160px;
+}
+.main_content{
+	position: relative;
+}
+
+/*主選單*/
+.sub_nav{
+	position: fixed;
+	top: 88px;
+	left: 0;
+	width: 640px;
+	height: 72px;
+	text-align: center;
+	background: #fff;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+	z-index: 3;
+}
+.sub_nav_block{
+	display: inline-block;
+}
+.sub_nav_block li{
+	width: 100px;
+	height: 72px;
+	float: left;
+	line-height: 72px;
+}
+.sub_nav_block a{
+	display: block;
+	color: #9b9b9b;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+	font-size: 24px;
+}
+.sub_nav_block .active{
+	color: #ff9600;
+	background: url(../img/nav_hover@2x.png) repeat-x bottom;
+}
+.sub_nav_block .disable{
+	color: #d0d0d0;
+}
+
+/*選擇課程食譜*/
+.course_selection{
+	text-align: center;
+}
+.course_topic{
+	line-height: 50px;
+	padding: 20px 30px;
+	display: inline-block;
+}
+.course_month,
+.course_name{
+	display: block;
+	float: left;
+	color: #4a4a4a;
+	font-size: 36px;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+}
+.course_month:after{
+	content: "月";
+	display: inline-block;
+	padding-right: 10px;
+}
+.course_name:before{
+	content: "/";
+	display: inline-block;
+	letter-spacing: 10px;
+}
+.course_name{
+	max-width:496px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.course_photo{
+	width: 100%;
+	height: 320px;
+	overflow: hidden;
+	font-size:0;.
+	z-index: 1;
+}
+.course_photo ul{
+	height: 100%;
+	white-space: nowrap;
+	font-size: 0;/*垂直置中+消除inline-block間隙*/
+}
+.course_photo ul:before{/* 垂直置中 */
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 100%;
+}
+.course_photo li{
+	position: relative;
+	display: inline-block;
+	width: 120px;
+	height: 200px;
+	overflow: hidden;
+	border: 10px solid #fff;
+	line-height: 0;
+	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+	vertical-align: middle;/* 垂直置中 */
+	margin: 0 20px;
+	-webkit-transition: select 0.5s linear;
+  -moz-transition: select 0.5s linear;
+  -o-transition: select 0.5s linear;
+  -ms-transition: select 0.5s linear;
+  transition: select 0.5s linear;
+}
+.course_photo li:first-child{
+	margin-left: 0;
+}
+.course_photo li:last-child{
+	margin-right: 0;
+}
+.course_photo li:before{
+	content: "";
+	position: absolute;
+	background: rgba(255,255,255,0.6);
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+
+}
+.course_photo img{
+	width: 320px;
+}
+.course_detail{
+	line-height: 30px;
+	min-height: 200px;
+	padding-bottom: 20px;
+	margin-top: 360px;
+}
+.course_detail li{
+	color: #737373;
+	font-size: 24px;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+}
+/*選教室地點*/
+.studio_selection{
+	margin: 0 30px;
+}
+.studio_selection select{
+	width: 580px;
+	height: 80px;
+	margin: 0 auto 20px auto;
+	box-sizing:border-box;
+	padding: 0 20px;
+	font-size: 28px;
+	color: #737373;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+	background: url(../img/select_studio@2x.png) no-repeat 535px center, 
+					#efefef;
+}
+.bd4{
+	border-radius: 4px;
+	border: 0;
+	outline: 0;
+}
+.btn_block{
+	width: auto;
+	text-align: center;
+	font-size: 0;
+	padding-bottom: 45px;
+}
+.btn_block a{
+	display: inline-block;
+	height: 80px;
+	line-height: 80px;
+	border-radius: 4px;
+	font-family: 'PingFangTC-Medium',微軟正黑體;
+	color: #fff;
+	font-size: 32px;
+}
+.btn_orange{
+	background: linear-gradient(to bottom, #f5a623 0%,#ff9601 100%);
+}
+.next{
+	width: 580px;
+}
+/*footer*/
+.main_nav{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 640px;
+	height: 88px;
+	background: #fff;
+	box-shadow: 0 -2px 10px 0 rgba(0,0,0,0.2);
+}
+.main_nav li{
+	width: 20%;
+	height: 88px;
+	float: left;
+	line-height: 64px;
+}
+.main_nav a{
+	display: block;
+	padding-top: 35px;
+	text-align: center;
+	font-size: 24px;
+	color: #9b9b9b;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+}
+.main_nav .news{
+	background: url(../img/news.png) no-repeat center 12px;
+}
+.main_nav .collect{
+	background: url(../img/collect.png) no-repeat center 13px;
+}
+.main_nav .course{
+	background: url(../img/course.png) no-repeat center 11px;
+}
+.main_nav .booking{
+	background: url(../img/booking.png) no-repeat center 13px;
+}
+.main_nav .more{
+	background: url(../img/more.png) no-repeat center 29px;
+}
+.main_nav .active{
+	color: #ff9600;
+}
+.main_nav .news.active{
+	background: url(../img/news_hover.png) no-repeat center 12px;
+}
+.main_nav .collect.active{
+	background: url(../img/collect_hover.png) no-repeat center 13px;
+}
+.main_nav .course.active{
+	background: url(../img/course_hover.png) no-repeat center 11px;
+}
+.main_nav .booking.active{
+	background: url(../img/booking_hover.png) no-repeat center 13px;
+}
+.main_nav .more.active{
+	background: url(../img/more_hover.png) no-repeat center 29px;
+}
+
+/*selectday*//*選擇日期*/
+.header_btn a{
+	display: block;
+	height: 88px;
+}
+.header_btn .back{
+	width: 88px;
+	background: url(../img/back.png) no-repeat 20px center;
+}
+.main.no_sub-nav{
+	top:88px;
+}
+.no_sub-nav .sub_nav{
+	display: none;
+}
+.selectday_selection{
+	text-align: center;
+	padding: 0 30px;
+}
+.selectday_name{
+	display: block;
+	color: #4a4a4a;
+	font-size: 36px;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+	padding: 20px 0 45px 0;
+}
+.selectday_time{
+	font-size: 0px;
+	padding-bottom: 45px;
+}
+.selectday_time span{
+	display: inline-block;
+	font-size: 32px;
+	color: #737373;
+	font-family: arial;
+}
+.selectday_time .year:after{
+	content: "/";
+	padding: 0 10px;
+}
+.selectday_week ul{
+	font-size: 0;
+	padding-bottom: 45px;
+}
+.selectday_week li{
+	display: inline-block;
+	width: calc(100%/7);
+	color: #d0d0d0;
+	font-size: 16px;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+}
+.selectday_date{
+	padding-bottom: 25px;
+}
+.selectday_date table,
+.selectday_date tbody,
+.selectday_date tr{
+	display: block;
+	font-size: 0;
+}
+.selectday_date td{
+	display: inline-block;
+	width: calc(100%/7);
+}
+.selectday_date a{
+	position: relative;
+	display: block;
+	margin: 0 9px 35px 9px;
+	color: #737373;
+	font-size: 32px;
+	font-family: arial;
+	height: 64.85px;
+	line-height: 64.85px;
+	border-radius: 4px;
+}
+.selectday_date .disable{
+	pointer-events: none;
+	cursor: default;
+	color: #d0d0d0;
+}
+.selectday_date .choose{
+	color: #fff;
+	background: #FF9600;
+}
+.selectday_date .today:after{
+	content: "";
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background: #737373;
+	border-radius: 5px;
+	top: 50px;
+	left: 50%;
+	margin-left: -4px;
+}
+.selectday_date .today.choose:after{
+	background: #fff;
+}
+.selectday_selection .btn_block a{
+	width: calc(100%/3 - 20px);
+}
+.selectday_selection .btn_gray{
+	margin: 0 30px;
+}
+.btn_green{
+	background: linear-gradient(to bottom, #AAE049 0%,#8BC02D 100%);
+}
+.btn_gray{
+	background: linear-gradient(to bottom, #E5E5E5 0%,#C2C2C2 100%);
+	color:#737373!important;
+}
+.btn_sakura{
+	background: linear-gradient(to bottom, #F19FB9 0%,#E57D9E 100%);
+}
+/*selectclass*/
+.list_area{
+	padding: 20px 20px 0 20px;
+}
+.list_row{
+	width: 100%;
+	box-shadow: 0 0 5px 0 rgba(0,0,0,0.3);
+	background: #fff;
+	position: relative;
+	margin-bottom: 20px;
+}
+.list_row:last-child{
+	margin-bottom: 0;
+}
+.list_row .list_pic,
+.list_row .list_topic{
+	display: block;
+	float: left;
+}
+.list_pic{
+	overflow: hidden;
+}
+.list_pic img{
+	width: 100%;
+}
+.selectclass_result .list_pic{
+	width: 208px;
+	height: 208px;
+}
+.selectclass_result .list_topic{
+	width: 352px;
+	padding: 20px;
+	line-height: 36px;
+}
+.list_title{
+	color: #4a4a4a;
+	font-size: 32px;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+}
+.selectclass_result .list_title{
+	padding-bottom: 10px;
+}
+.list_date{
+	color: #737373;
+	font-size: 28px;
+	font-family: arial;
+}
+.list_date .year{
+	padding-right: 5px;
+}
+.list_teacher,
+.list_student{
+	color: #9b9b9b;
+	font-size: 24px;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+}
+.list_teacher:before{
+	content: "老師";
+	display: inline-block;
+	padding-right: 10px;
+}
+.list_student:before{
+	content: "已預約";
+	display: inline-block;
+	padding-right: 10px;
+}
+.list_student:after{
+	content: "人";
+	display: inline-block;
+	padding-left: 10px;
+}
+.list_area .btn_block{
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	padding-bottom: 0;
+}
+.list_area .btn_block a{
+	height: 60px;
+	line-height: 60px;
+	font-size: 28px;
+}
+.selectclass_result .booking{
+	width: 120px;
+}
+.lightbox_btn.action2 a{
+	float: left;
+	width: calc(100%/2 - 0.5px);
+}
+.lightbox_btn.action2 a:first-child{
+	border-right: #b3b3b3 1px solid;
+}
+.selectclass_null{
+	padding: 260px 30px 0 30px;
+}
+.null_txt{
+	padding-bottom:  45px;
+	text-align: center;
+}
+.null_txt p{
+	color: #737373;
+	font-size: 34px;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+}
+.btn_block.reset a{
+	width: calc(100%/2 - 15px);
+}
+.btn_block.reset a:first-child{
+	margin-right: 30px;
+}

@@ -50,7 +50,7 @@
             </div>
             <div class="selectday_time">
                <span class="year">2016</span>
-               <span class="month">4</span>
+               <span class="month"><?php echo $classmonth;?></span>
             </div>
             <div class="selectday_week">
                <ul>
@@ -63,6 +63,7 @@
                   <li>週六</li>
                </ul>
             </div>
+            <?php if ($classmonth == 4) {?>
             <div class="selectday_date">
                <table>
                   <tr>
@@ -89,34 +90,91 @@
                      <td><a class="disable" href="javascript:;">12</a></td>
                      <td><a class="disable" href="javascript:;">13</a></td>
                      <td><a class="disable" href="javascript:;">14</a></td>
-                     <td><a class="today" href="javascript:;">15</a></td>
-                     <td><a href="javascript:;">16</a></td>
+                     <td><a class="enable today" href="javascript:;">15</a></td>
+                     <td><a class="enable" href="javascript:;">16</a></td>
                   </tr>
                   <tr>
-                     <td><a href="javascript:;">17</a></td>
-                     <td><a href="javascript:;">18</a></td>
-                     <td><a href="javascript:;">19</a></td>
-                     <td><a href="javascript:;">20</a></td>
-                     <td><a href="javascript:;">21</a></td>
-                     <td><a href="javascript:;">22</a></td>
-                     <td><a href="javascript:;">23</a></td>
+                     <td><a class="enable" href="javascript:;">17</a></td>
+                     <td><a class="enable" href="javascript:;">18</a></td>
+                     <td><a class="enable" href="javascript:;">19</a></td>
+                     <td><a class="enable" href="javascript:;">20</a></td>
+                     <td><a class="enable" href="javascript:;">21</a></td>
+                     <td><a class="enable" href="javascript:;">22</a></td>
+                     <td><a class="enable" href="javascript:;">23</a></td>
                   </tr>
                   <tr>
-                     <td><a href="javascript:;">24</a></td>
-                     <td><a href="javascript:;">25</a></td>
-                     <td><a href="javascript:;">26</a></td>
-                     <td><a href="javascript:;">27</a></td>
-                     <td><a href="javascript:;">28</a></td>
-                     <td><a href="javascript:;">29</a></td>
-                     <td><a href="javascript:;">30</a></td>
+                     <td><a class="enable" href="javascript:;">24</a></td>
+                     <td><a class="enable" href="javascript:;">25</a></td>
+                     <td><a class="enable" href="javascript:;">26</a></td>
+                     <td><a class="enable" href="javascript:;">27</a></td>
+                     <td><a class="enable" href="javascript:;">28</a></td>
+                     <td><a class="enable" href="javascript:;">29</a></td>
+                     <td><a class="enable" href="javascript:;">30</a></td>
                   </tr>
                </table>
             </div>
-            <div class="btn_block">
-               <a class="btn_green day_all"href="" >日期全選</a>
-               <a class="btn_gray day_reset"href="" >清除選項</a>
-               <a class="btn_sakura day_search"href="selectclass" >搜尋</a>
+            <?php } else { ?>
+            <div class="selectday_date">
+               <table>
+                  <tr>
+                     <td><a class="enable" href="javascript:;">1</a></td>
+                     <td><a class="enable" href="javascript:;">2</a></td>
+                     <td><a class="enable" href="javascript:;">3</a></td>
+                     <td><a class="enable" href="javascript:;">4</a></td>
+                     <td><a class="enable" href="javascript:;">5</a></td>
+                     <td><a class="enable" href="javascript:;">6</a></td>
+                     <td><a class="enable" href="javascript:;">7</a></td>
+                  </tr>
+                  <tr>
+                     <td><a class="enable" href="javascript:;">8</a></td>
+                     <td><a class="enable" href="javascript:;">9</a></td>
+                     <td><a class="enable" href="javascript:;">10</a></td>
+                     <td><a class="enable" href="javascript:;">11</a></td>
+                     <td><a class="enable" href="javascript:;">12</a></td>
+                     <td><a class="enable" href="javascript:;">13</a></td>
+                     <td><a class="enable" href="javascript:;">14</a></td>
+                  </tr>
+                  <tr>
+                     <td><a class="enable" href="javascript:;">15</a></td>
+                     <td><a class="disable" href="javascript:;">16</a></td>
+                     <td><a class="disable" href="javascript:;">17</a></td>
+                     <td><a class="disable" href="javascript:;">18</a></td>
+                     <td><a class="disable" href="javascript:;">19</a></td>
+                     <td><a class="disable" href="javascript:;">20</a></td>
+                     <td><a class="disable" href="javascript:;">21</a></td>
+                  </tr>
+                  <tr>
+                     <td><a class="disable" href="javascript:;">22</a></td>
+                     <td><a class="disable" href="javascript:;">23</a></td>
+                     <td><a class="disable" href="javascript:;">24</a></td>
+                     <td><a class="disable" href="javascript:;">25</a></td>
+                     <td><a class="disable" href="javascript:;">26</a></td>
+                     <td><a class="disable" href="javascript:;">27</a></td>
+                     <td><a class="disable" href="javascript:;">28</a></td>
+                  </tr>
+                  <tr>
+                     <td><a class="disable" href="javascript:;">29</a></td>
+                     <td><a class="disable" href="javascript:;">30</a></td>
+                     <td><a class="disable" href="javascript:;">31</a></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                  </tr>
+               </table>
             </div>
+            <?php } ?>
+            <form action="selectclass" method="get">
+               <div class="btn_block">
+                  <a class="btn_green day_all" id="select_all_available" href="javascript:;" >日期全選</a>
+                  <a class="btn_gray day_reset" id="clear_select" href="javascript:;" >清除日期</a>
+                  <a id="nextstep" class="btn_sakura day_search" href="javascript:;">搜尋</a>
+                  <input id="selected_day" name="selected_day" type="hidden" value="">
+                  <input id="selected_month" name="selected_month" type="hidden" value="<?php echo $classmonth;?>">
+                  <input id="selected_class" name="selected_class" type="hidden" value="<?php echo $_GET['selected_class'];?>">
+                  <input id="selected_classroom" name="selected_classroom" type="hidden" value="<?php echo $_GET['selected_classroom'];?>">
+               </div>
+            </form>
          </div>
       </div>
    </main>

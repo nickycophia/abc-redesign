@@ -84,8 +84,8 @@
          <form action="selectday" method="get">
 	         <div class="btn_block">
 	            <a class="btn_orange next" href="javascript:;" onclick="$(this).closest('form').submit()">下一步</a>
-				<input id="selected_class" name="selected_class" type="hidden" value="3">
-				<input id="selected_classroom" name="selected_classroom" type="hidden" value="1">
+   				<input id="selected_class" name="selected_class" type="hidden" value="3">
+   				<input id="selected_classroom" name="selected_classroom" type="hidden" value="1">
 	         </div>
 	     </form>
       </div>

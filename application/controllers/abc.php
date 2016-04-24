@@ -69,11 +69,35 @@ class Abc extends CI_Controller {
 	{
 		// selected_class
 		// selected_classroom
-		$this->load->view('selectday');
+		if (empty($_GET['selected_class']) || 
+			empty($_GET['selected_classroom'])) {
+			header('Location: '.base_url());
+			return;
+		}
+
+		// 課程
+		$class_data = array();
+		$class_sql = $this->db->select('*')
+								->from('class')
+								->where('no',$_GET['selected_class'])
+								->get();
+		$class_data = $class_sql->result_array();
+		$class_sql->free_result();
+
+		$data['classmonth'] = $class_data[0]['classmonth'];
+
+		$this->load->view('selectday',$data);
 	}
 
 	public function selectclass()
 	{
+		if (empty($_GET['selected_day']) || 
+			empty($_GET['selected_class']) || 
+			empty($_GET['selected_classroom'])) {
+			header('Location: '.base_url());
+			return;
+		}
+		
 		$this->load->view('selectclass');
 	}
 

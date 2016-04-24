@@ -92,13 +92,83 @@ class Abc extends CI_Controller {
 	public function selectclass()
 	{
 		if (empty($_GET['selected_day']) || 
+			empty($_GET['selected_month']) || 
 			empty($_GET['selected_class']) || 
 			empty($_GET['selected_classroom'])) {
 			header('Location: '.base_url());
 			return;
 		}
-		
-		$this->load->view('selectclass');
+
+		// 課程資料
+		$class_data = array();
+		$class_sql = $this->db->select('*')
+								->from('class')
+								->where('no',$_GET['selected_class'])
+								->get();
+		$class_data = $class_sql->result_array();
+		$class_sql->free_result();
+
+		// 老師資料
+		$teacher_data = array();
+		$teacher_data_tmp = array();
+		$teacher_sql = $this->db->select('*')
+							->from('teacher')
+							->where('classroomno', $_GET['selected_classroom'])
+							->order_by('no','asc')
+							->get();
+		$teacher_data_tmp = $teacher_sql->result_array();
+		foreach ($teacher_data_tmp as $key => $value) {
+			$teacher_data[$value['no']] = $value['name'];
+		}
+
+		// 預約資料
+		$book_data = array();
+		$book_data_tmp = array();
+		$book_sql = $this->db->select('*')
+							->from('booking')
+							->where('memberno', 1)
+							->order_by('no','asc')
+							->get();
+		$book_data_tmp = $book_sql->result_array();
+		foreach ($book_data_tmp as $key => $value) {
+			$book_data[] = $value['scheduleno'];
+		}
+
+		$selected_date = array();
+		$selected_day_tmp = explode(",", $_GET['selected_day']);
+		foreach ($selected_day_tmp as $key => $value) {
+			$item = "20160".$_GET['selected_month'].sprintf("%02d", $value);
+			$selected_date[$item] = intval($item);
+		}
+		$schedule_data = array();
+		$schedule_sql = $this->db->select('*')
+							->from('schedule')
+							->where('classno', $_GET['selected_class'])
+							->where('classroomno', $_GET['selected_classroom'])
+							->where_in('date', $selected_date)
+							->order_by('date', 'asc')
+							->get();
+		$schedule_data = $schedule_sql->result_array();
+
+		$result = array();
+		if (count($schedule_data) != 0) {
+			foreach ($schedule_data as $key => $value) {
+				$date = date("Y/m/d", strtotime($value['date']));
+				$classtime = substr_replace($value['classtime'], ":", 2, 0);
+				$bookstatus = (in_array($value['no'], $book_data)) ? 'booked' : 'available';
+				$result[$value['no']] = array(	'pic' => $class_data[0]['pic'],
+												'classname'	=> $class_data[0]['name'],
+												'date' => $date,
+												'classtime' => $classtime,
+												'teacher' => $teacher_data[$value['teacherno']],
+												'attender' => $value['attender'],
+												'scheduleno' => $value['no'],
+												'bookstatus' => $bookstatus);
+			}
+		}
+
+		$data['result'] = $result;
+		$this->load->view('selectclass', $data);
 	}
 
 	public function mybooking()

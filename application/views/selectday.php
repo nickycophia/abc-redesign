@@ -38,7 +38,7 @@
       <div class="header">
          <h1 class="header_name">選課系統</h1>
          <div class="header_btn">
-         <a class="back"href="course"></a>
+         <a class="back" href="course"></a>
          </div>
       </div>
    </header>

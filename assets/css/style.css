@@ -513,6 +513,11 @@ header{
 .selectclass_result .booking{
 	width: 120px;
 }
+.selectclass_result .disable{
+	width: 120px;
+	pointer-events: none;
+	cursor: default;
+}
 .lightbox_btn.action2 a{
 	float: left;
 	width: calc(100%/2 - 0.5px);

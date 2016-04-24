@@ -25,11 +25,20 @@
    <![endif]-->
 </head>
 <body>
-   <div id="lightbox_area" class="lightbox_area" style="display:none;">
+   <div id="lightbox_area" class="lightbox_area" >
       <div class="lightbox">
          <div class="lightbox_topic">
             <div class="lightbox_name">無法選擇<span class="classtype"></span>類別</div>
             <div class="lightbox_txt">您尚未購買<span class="classtype"></span>類的課程</div>
+         </div>
+         <div class="lightbox_btn">
+            <a class="ok" href="javascript:;" id="lightbox_confirm">確定</a>
+         </div>
+      </div>
+
+      <div class="lightbox">
+         <div class="lightbox_topic studio">
+            <div class="lightbox_name">請選擇上課地點</div>
          </div>
          <div class="lightbox_btn">
             <a class="ok" href="javascript:;" id="lightbox_confirm">確定</a>
@@ -76,6 +85,7 @@
          </div>
          <div class="studio_selection">
             <select class="bd4" name="" id="classroom_selection">
+               <option value="0">選擇上課地點</option>
                <option value="1">南港教室</option>
                <option value="2">大葉高島屋教室</option>
                <option value="3">環球板橋教室</option>

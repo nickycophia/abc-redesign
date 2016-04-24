@@ -47,6 +47,8 @@ $route['selectclass'] = "abc/selectclass";
 
 $route['mybooking'] = "abc/mybooking";
 $route['bookingdetail'] = "abc/bookingdetail";
+$route['history'] = "abc/history";
+$route['historydetail'] = "abc/historydetail";
 
 $route['register'] = "abc/register";
 $route['login'] = "abc/login";

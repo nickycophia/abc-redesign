@@ -1,4 +1,4 @@
-html{
+©html{
   height:100%;
 }
 body{
@@ -102,6 +102,7 @@ header{
 	height: 72px;
 	float: left;
 	line-height: 72px;
+	margin: 0 25px; 
 }
 .sub_nav_block a{
 	display: block;
@@ -449,15 +450,20 @@ header{
 }
 .list_pic{
 	overflow: hidden;
+	line-height: 0;
 }
 .list_pic img{
 	width: 100%;
 }
-.selectclass_result .list_pic{
+.selectclass_result .list_pic,
+.mybooking_result .list_pic,
+.history_result .list_pic{
 	width: 208px;
 	height: 208px;
 }
-.selectclass_result .list_topic{
+.selectclass_result .list_topic,
+.mybooking_result .list_topic,
+.history_result .list_topic{
 	width: 352px;
 	padding: 20px;
 	line-height: 36px;
@@ -466,8 +472,11 @@ header{
 	color: #4a4a4a;
 	font-size: 32px;
 	font-family: 'PingFangTC-Regular',微軟正黑體;
+	font-weight: normal;
 }
-.selectclass_result .list_title{
+.selectclass_result .list_title,
+.mybooking_result .list_title,
+.history_result .list_title{
 	padding-bottom: 10px;
 }
 .list_date{
@@ -542,4 +551,72 @@ header{
 }
 .btn_block.reset a:first-child{
 	margin-right: 30px;
+}
+/*mybooking*/
+.mybooking_result .btn_block a,
+.history_result .btn_block a{
+	width: 166px;
+}
+.mybooking_result .cancel{
+	margin-right: 20px;
+}
+/*bookingdetail*/
+.detail_all{
+	padding: 30px;
+}
+.list_topic{
+	line-height: 44px;
+}
+.bookingdetail_area .list_title{
+	color: #5c5c5c;
+	font-size: 36px;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+	padding-bottom: 10px;
+}
+.list_type{
+	color: #737373;
+	font-size: 28px;
+	font-family: 'PingFangTC-Regular',微軟正黑體;
+	text-align: right;
+}
+.list_type:after{
+	content: "類別";
+	display: inline-block;
+}
+.bookingdetail_area .list_date,
+.bookingdetail_area .list_type{
+	display: block;
+	float: left;
+	width: 50%;
+}
+.list_studio,
+.bookingdetail_area .list_teacher,
+.bookingdetail_area .list_student {
+    color: #737373;
+    font-size: 28px;
+    font-family: 'PingFangTC-Regular',微軟正黑體;
+    display: block;
+	float: left;
+	width: 50%;
+}
+.list_studio{
+	clear: left;
+}
+.list_studio:before{
+	content: "地點";
+	display: inline-block;
+	padding-right: 10px;
+}
+.bookingdetail_area .list_teacher{
+	text-align: right;
+}
+.bookingdetail_area .course_detail{
+	padding-top: 30px;
+	margin-top: 30px;
+	border-top: 1px solid #e3e3e3;
+}
+.bookingdetail_area .course_detail li{
+	color: #9b9b9b;
+    font-size: 24px;
+    font-family: 'PingFangTC-Regular',微軟正黑體;
 }

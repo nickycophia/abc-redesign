@@ -289,6 +289,16 @@ class Abc extends CI_Controller {
 		}
 		return $teacher_ref;
 	}
+
+	public function more()
+	{
+		$this->load->view('more');
+	}
+
+	public function collect()
+	{
+		$this->load->view('collect');
+	}
 }
 
 /* End of file welcome.php */

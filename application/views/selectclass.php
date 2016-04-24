@@ -45,17 +45,11 @@
    </header>
    <main class="main no_sub-nav">
       <div class="main_content">
-         <!-- <nav class="sub_nav">
-            <ul class="sub_nav_block">
-               <li><a class="active" href="">料理</a></li>
-               <li><a class="disable" href="">麵包</a></li>
-               <li><a class="disable" href="">甜點</a></li>
-            </ul>
-         </nav> -->
+         
          <div class="selectclass_result list_area">
             <div class="list_row"><!-- row -->
                <div class="list_pic">
-                  <img src="img/f4_1.jpg" alt="">
+                  <img src="assets/img/f4_1.jpg" alt="">
                </div>
                <div class="list_topic">
                   <h4 class="list_title">日本媽媽家常菜</h4>
@@ -73,7 +67,7 @@
             
             <div class="list_row"><!-- row -->
                <div class="list_pic">
-                  <img src="img/f4_1.jpg" alt="">
+                  <img src="assets/img/f4_1.jpg" alt="">
                </div>
                <div class="list_topic">
                   <h4 class="list_title">日本媽媽家常菜</h4>
@@ -91,7 +85,7 @@
 
             <div class="list_row"><!-- row -->
                <div class="list_pic">
-                  <img src="img/f4_1.jpg" alt="">
+                  <img src="assets/img/f4_1.jpg" alt="">
                </div>
                <div class="list_topic">
                   <h4 class="list_title">日本媽媽家常菜</h4>
@@ -109,7 +103,7 @@
 
             <div class="list_row"><!-- row -->
                <div class="list_pic">
-                  <img src="img/f4_1.jpg" alt="">
+                  <img src="assets/img/f4_1.jpg" alt="">
                </div>
                <div class="list_topic">
                   <h4 class="list_title">日本媽媽家常菜</h4>
@@ -127,7 +121,7 @@
 
             <div class="list_row"><!-- row -->
                <div class="list_pic">
-                  <img src="img/f4_1.jpg" alt="">
+                  <img src="assets/img/f4_1.jpg" alt="">
                </div>
                <div class="list_topic">
                   <h4 class="list_title">日本媽媽家常菜</h4>

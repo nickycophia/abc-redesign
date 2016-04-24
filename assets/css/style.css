@@ -4,7 +4,6 @@ html{
 body{
 	width: 640px;
 	height: 1136px;
-	overflow: hidden;
 	background: #fafafa;
 	position: relative;
 }
@@ -69,12 +68,15 @@ header{
 	font-weight: bold;
 }
 .header_btn{
-	position: relative;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 .main{
 	width: 100%;
 	position: relative;
 	top: 160px;
+	padding-bottom: 100px;
 }
 .main_content{
 	position: relative;
@@ -152,7 +154,7 @@ header{
 	width: 100%;
 	height: 320px;
 	overflow: hidden;
-	font-size:0;.
+	font-size:0;
 	z-index: 1;
 }
 .course_photo ul{
@@ -198,7 +200,6 @@ header{
 	left: 0;
 	bottom: 0;
 	right: 0;
-
 }
 .course_photo img{
 	width: 320px;
@@ -207,7 +208,7 @@ header{
 	line-height: 30px;
 	min-height: 200px;
 	padding-bottom: 20px;
-	margin-top: 360px;
+	margin-top: 340px;
 }
 .course_detail li{
 	color: #737373;
@@ -313,7 +314,6 @@ header{
 .main_nav .more.active{
 	background: url(../img/more_hover.png) no-repeat center 29px;
 }
-
 /*selectday*//*選擇日期*/
 .header_btn a{
 	display: block;

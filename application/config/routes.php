@@ -52,6 +52,9 @@ $route['register'] = "abc/register";
 $route['login'] = "abc/login";
 $route['member'] = "abc/member";
 
+$route['more'] = "abc/more";
+$route['collect'] = "abc/collect";
+
 $route['404_override'] = '';
 
 // 產生課程表

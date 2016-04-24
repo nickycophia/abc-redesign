@@ -67,7 +67,8 @@ class Abc extends CI_Controller {
 
 	public function selectday()
 	{
-		
+		// selected_class
+		// selected_classroom
 		$this->load->view('selectday');
 	}
 

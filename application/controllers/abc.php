@@ -299,6 +299,14 @@ class Abc extends CI_Controller {
 	{
 		$this->load->view('collect');
 	}
+	public function history()
+	{
+		$this->load->view('history');
+	}
+	public function historydetail()
+	{
+		$this->load->view('historydetail');
+	}
 }
 
 /* End of file welcome.php */

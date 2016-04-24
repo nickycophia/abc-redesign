@@ -45,7 +45,17 @@
    </header>
    <main class="main no_sub-nav">
       <div class="main_content">
-         
+
+         <div class="selectclass_null" style="display:block;"><!-- null -->
+            <div class="null_txt">
+               <p>很抱歉，滿足設定條件的課程不存在，<br>請更改設定條件後再搜尋。</p>
+            </div>
+            <div class="btn_block reset">
+               <a class="btn_green" href="course.html">更改教室</a>
+               <a class="btn_orange " href="selectday.html">更改日期</a>
+            </div>
+         </div> 
+            
          <div class="selectclass_result list_area">
             <div class="list_row"><!-- row -->
                <div class="list_pic">

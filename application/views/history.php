@@ -22,28 +22,7 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
    <![endif]-->
 </head>
-<body>
-   <div id="lightbox_area" class="lightbox_area" style="display: display;">
-      <div class="lightbox">
-         <div class="lightbox_topic">
-            <div class="lightbox_name">取消預約</div>
-            <div class="lightbox_txt">您確定要取消 4/20 18:00的<br>日本媽媽家常菜<br>料理課嗎？</div>
-         </div>
-         <div class="lightbox_btn action2">
-            <a class="keep" href="" >保留預約</a>
-            <a class="delete" href="" >確定取消</a>
-         </div>
-      </div>
-
-      <div class="lightbox">
-         <div class="lightbox_topic">
-            <div class="lightbox_name">取消預約成功</div>
-         </div>
-         <div class="lightbox_btn">
-            <a class="ok" href="" >確定</a>
-         </div>
-      </div>
-   </div>   
+<body> 
    <header>
       <div class="header">
          <h1 class="header_name">我的日程表</h1>
@@ -56,18 +35,18 @@
       <div class="main_content">
          <nav class="sub_nav">
             <ul class="sub_nav_block">
-               <li><a class="active" href="">確認日程</a></li>
-               <li><a href="javascript:;">上課進度</a></li>
+               <li><a href="">確認日程</a></li>
+               <li><a class="active" href="javascript:;">上課進度</a></li>
             </ul>
          </nav>
 
          <div class="selectclass_null" style="display:block;"><!-- null -->
             <div class="null_txt">
-               <p>您目前還沒有預約課程喔！</p>
+               <p>您目前還沒有上課紀錄喔！</p>
             </div>
          </div>
          
-         <div class="mybooking_result list_area">
+         <div class="history_result list_area">
             <div class="list_row"><!-- row -->
                <div class="list_pic">
                   <img src="assets/img/f4_1.jpg" alt="">
@@ -80,8 +59,7 @@
                   </div>
                </div>
                <div class="btn_block">
-                  <a class="btn_gray cancel"href="" >取消預約</a>
-                  <a class="btn_orange go_bookingdetail"href="bookingdetail" >查看詳情</a>
+                  <a class="btn_orange go_bookingdetail"href="historydetail" >查看詳情</a>
                </div>
             </div>
             
@@ -97,8 +75,7 @@
                   </div>
                </div>
                <div class="btn_block">
-                  <a class="btn_gray cancel"href="" >取消預約</a>
-                  <a class="btn_orange go_bookingdetail"href="bookingdetail" >查看詳情</a>
+                  <a class="btn_orange go_bookingdetail"href="historydetail" >查看詳情</a>
                </div>
             </div>
 
@@ -114,8 +91,7 @@
                   </div>
                </div>
                <div class="btn_block">
-                  <a class="btn_gray cancel"href="" >取消預約</a>
-                  <a class="btn_orange go_bookingdetail"href="bookingdetail" >查看詳情</a>
+                  <a class="btn_orange go_bookingdetail"href="historydetail" >查看詳情</a>
                </div>
             </div>
 
@@ -131,8 +107,7 @@
                   </div>
                </div>
                <div class="btn_block">
-                  <a class="btn_gray cancel"href="" >取消預約</a>
-                  <a class="btn_orange go_bookingdetail"href="bookingdetail" >查看詳情</a>
+                  <a class="btn_orange go_bookingdetail"href="historydetail" >查看詳情</a>
                </div>
             </div>
 
@@ -148,8 +123,7 @@
                   </div>
                </div>
                <div class="btn_block">
-                  <a class="btn_gray cancel"href="" >取消預約</a>
-                  <a class="btn_orange go_bookingdetail"href="bookingdetail" >查看詳情</a>
+                  <a class="btn_orange go_bookingdetail"href="historydetail" >查看詳情</a>
                </div>
             </div>
          </div>

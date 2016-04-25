@@ -58,6 +58,10 @@ $route['register'] = "abc/register";
 $route['login'] = "abc/login";
 $route['member'] = "abc/member";
 
+$route['login'] = "abc/login";
+$route['forgetpsw'] = "abc/forgetpsw";
+$route['register'] = "abc/register";
+
 $route['more'] = "abc/more";
 $route['collect'] = "abc/collect";
 

@@ -323,6 +323,18 @@ class Abc extends CI_Controller {
 	{
 		$this->load->view('filterseat');
 	}
+	public function login()
+	{
+		$this->load->view('login');
+	}
+	public function forgetpsw()
+	{
+		$this->load->view('forgetpsw');
+	}
+	public function register()
+	{
+		$this->load->view('register');
+	}
 }
 
 /* End of file welcome.php */

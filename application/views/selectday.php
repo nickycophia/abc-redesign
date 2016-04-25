@@ -179,15 +179,9 @@
       </div>
    </main>
    <footer class="footer">
-      <nav class="main_nav">
-         <ul>
-            <li><a class="news" href="index.php">首頁</a></li>
-            <li><a class="collect" href="">收藏</a></li>
-            <li><a class="course active" href="">選課</a></li>
-            <li><a class="booking" href="">日程表</a></li>
-            <li><a class="more" href="">更多</a></li>
-         </ul>
-      </nav>
+      <div class="btn_block filter">
+         <a class="btn_filter filtered" href="filter" >更多篩選設定</a>
+      </div>
    </footer>
 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="assets/js/selectday.js"></script> 

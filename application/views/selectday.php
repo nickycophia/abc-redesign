@@ -173,6 +173,10 @@
                   <input id="selected_month" name="selected_month" type="hidden" value="<?php echo $classmonth;?>">
                   <input id="selected_class" name="selected_class" type="hidden" value="<?php echo $_GET['selected_class'];?>">
                   <input id="selected_classroom" name="selected_classroom" type="hidden" value="<?php echo $_GET['selected_classroom'];?>">
+                  
+                  <input id="selected_teacher" name="selected_teacher" type="hidden" value="">
+                  <input id="selected_time" name="selected_time" type="hidden" value="">
+                  <input id="selected_seat" name="selected_seat" type="hidden" value="">
                </div>
             </form>
          </div>
@@ -180,9 +184,129 @@
    </main>
    <footer class="footer">
       <div class="btn_block filter">
-         <a class="btn_filter filtered" href="filter?selected_class=<?php echo $_GET['selected_class'];?>&selected_classroom=<?php echo $_GET['selected_classroom'];?>" >更多篩選設定</a>
+         <a id="select_filter" class="btn_filter" href="javascript:;" >更多篩選設定</a>
       </div>
    </footer>
+   
+   <div class="filter_area to_filter" style="display: none;">
+      <header>
+         <div class="header">
+            <h1 class="header_name">更多篩選設定</h1>
+            <div class="header_btn">
+               <a id="close_to_filter" class="back"href="selectday"></a>
+            </div>
+         </div>
+      </header>
+      <main class="main no_sub-nav">
+         <div class="main_content">
+            <div class="filter_setting">
+               <div class="filter_topic">篩選工具幫您更快找到適合項目</div>
+               <div class="filter_cell go_filter">
+                  <a id="open_to_filterteacher" href="javascript:;" class="teacher">
+                     選擇老師
+                     <span>不指定</span>
+                  </a>
+                  <a id="open_to_filtertime" href="javascript:;" class="time">
+                     選擇上課時段
+                     <span>不指定</span>
+                  </a>
+                  <a id="open_to_filterseat" href="javascript:;" class="seat">
+                     選擇剩餘座位數
+                     <span>不指定</span>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </main>
+      <footer class="footer">
+         <div class="btn_block filter">
+            <a class="btn_filter remove" href="javascript:;" >清除篩選設定</a>
+         </div>
+      </footer>
+   </div>
+   
+   <div class="filter_area to_filterteacher" style="display: none;">
+      <header>
+         <div class="header">
+            <h1 class="header_name">選擇老師</h1>
+            <div class="header_btn">
+               <a id="close_to_filterteacher" class="back" href="javascript:;"></a>
+            </div>
+         </div>
+      </header>
+      <main class="main no_sub-nav">
+         <div class="main_content">
+            <div class="filter_setting">
+               <div class="filter_cell">
+                  <a id="no_assign_teacher" href="javascript:;" class="no_assign active">不指定</a>
+               </div>
+               <div id="teacher_filter_area" class="filter_cell">
+                  <?php foreach($classteacher as $key => $value): ?>
+                  <a href="javascript:;" class="teacher" data-teacherno="<?php echo $key;?>"><?php echo $value;?></a>
+                  <?php endforeach; ?>
+               </div>
+            </div>
+         </div>
+      </main>
+      <footer class="footer">
+      </footer>
+   </div>
+   
+   <div class="filter_area to_filtertime" style="display: none;">
+      <header>
+         <div class="header">
+            <h1 class="header_name">選擇時間</h1>
+            <div class="header_btn">
+               <a id="close_to_filtertime" class="back"href="javascript:;"></a>
+            </div>
+         </div>
+      </header>
+      <main class="main no_sub-nav">
+         <div class="main_content">
+            <div class="filter_setting">
+               <div class="filter_cell">
+                  <a id="no_assign_time" href="javascript:;" class="no_assign active">不指定</a>
+               </div>
+               <div id="time_filter_area" class="filter_cell">
+                  <a href="javascript:;" class="time" data-time="1000">10:00</a>
+                  <a href="javascript:;" class="time" data-time="1300">13:00</a>
+                  <a href="javascript:;" class="time" data-time="1600">16:00</a>
+                  <a href="javascript:;" class="time" data-time="1900">19:00</a>
+               </div>
+            </div>
+         </div>
+      </main>
+      <footer class="footer">
+      </footer>
+   </div>
+   
+   <div class="filter_area to_filterseat" style="display: none;">
+      <header>
+         <div class="header">
+            <h1 class="header_name">選擇剩餘座位數</h1>
+            <div class="header_btn">
+               <a id="close_to_filterseat" class="back" href="javascript:;"></a>
+            </div>
+         </div>
+      </header>
+      <main class="main no_sub-nav">
+         <div class="main_content">
+            <div class="filter_setting">
+               <div class="filter_cell">
+                  <a id="no_assign_seat" href="javascript:;" class="no_assign active">不指定</a>
+               </div>
+               <div id="seat_filter_area" class="filter_cell">
+                  <a href="javascript:;" class="seat" data-seat="0">4</a>
+                  <a href="javascript:;" class="seat" data-seat="1">3</a>
+                  <a href="javascript:;" class="seat" data-seat="2">2</a>
+                  <a href="javascript:;" class="seat" data-seat="3">1</a>
+               </div>
+            </div>
+         </div>
+      </main>
+      <footer class="footer">
+      </footer>
+   </div>
 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="assets/js/selectday.js"></script> 
 </body>

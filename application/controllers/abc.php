@@ -38,12 +38,28 @@ class Abc extends CI_Controller {
 		$classroom_data = $classroom_sql->result_array();
 		$classroom_sql->free_result();
 
+		// 預約資料
+		$booked_classno_data = array();
+		$book_data_tmp = array();
+		$book_sql = $this->db->select('*')
+							->from('booking')
+							->where('memberno', 1)
+							->order_by('no','asc')
+							->get();
+		$book_data_tmp = $book_sql->result_array();
+		foreach ($book_data_tmp as $key => $value) {
+			$booked_classno_data[] = $value['classno'];
+		}
+
 		// 課程
 		$class_data = array();
-		$class_sql = $this->db->select('*')
-								->from('class')
-								->order_by('no','asc')
-								->get();
+		$this->db->select('*');
+		$this->db->from('class');
+		if (count($booked_classno_data) > 0) {
+			$this->db->where_not_in('no', $booked_classno_data);
+		}
+		$this->db->order_by('no','asc');
+		$class_sql = $this->db->get();
 		$class_data = $class_sql->result_array();
 		$class_sql->free_result();
 
@@ -67,8 +83,6 @@ class Abc extends CI_Controller {
 
 	public function selectday()
 	{
-		// selected_class
-		// selected_classroom
 		if (empty($_GET['selected_class']) || 
 			empty($_GET['selected_classroom'])) {
 			header('Location: '.base_url());
@@ -84,7 +98,21 @@ class Abc extends CI_Controller {
 		$class_data = $class_sql->result_array();
 		$class_sql->free_result();
 
+		// 老師資料
+		$teacher_data = array();
+		$teacher_data_tmp = array();
+		$teacher_sql = $this->db->select('*')
+							->from('teacher')
+							->where('classroomno', $_GET['selected_classroom'])
+							->order_by('no','asc')
+							->get();
+		$teacher_data_tmp = $teacher_sql->result_array();
+		foreach ($teacher_data_tmp as $key => $value) {
+			$teacher_data[$value['no']] = $value['name'];
+		}
+
 		$data['classmonth'] = $class_data[0]['classmonth'];
+		$data['classteacher'] = $teacher_data;
 
 		$this->load->view('selectday',$data);
 	}
@@ -124,6 +152,7 @@ class Abc extends CI_Controller {
 		// 預約資料
 		$book_data = array();
 		$book_data_tmp = array();
+		$class_booked = false;
 		$book_sql = $this->db->select('*')
 							->from('booking')
 							->where('memberno', 1)
@@ -132,6 +161,9 @@ class Abc extends CI_Controller {
 		$book_data_tmp = $book_sql->result_array();
 		foreach ($book_data_tmp as $key => $value) {
 			$book_data[] = $value['scheduleno'];
+			if ($value['classno'] == $_GET['selected_class']) {
+				$class_booked = true;
+			}
 		}
 
 		$selected_date = array();
@@ -141,16 +173,34 @@ class Abc extends CI_Controller {
 			$selected_date[$item] = intval($item);
 		}
 		$schedule_data = array();
-		$schedule_sql = $this->db->select('*')
-							->from('schedule')
-							->where('classno', $_GET['selected_class'])
-							->where('classroomno', $_GET['selected_classroom'])
-							->where_in('date', $selected_date)
-							->order_by('date', 'asc')
-							->get();
+
+		$this->db->select('*');
+		$this->db->from('schedule');
+		$this->db->where('classno', $_GET['selected_class']);
+		$this->db->where('classroomno', $_GET['selected_classroom']);
+		$this->db->where_in('date', $selected_date);
+
+		// 老師
+		if ($_GET['selected_teacher'] != '') {
+			$selected_teacher = explode(",", $_GET['selected_teacher']);
+			$this->db->where_in('teacherno', $selected_teacher);
+		}
+		// 時間
+		if ($_GET['selected_time']  != '') {
+			$selected_teacher = explode(",", $_GET['selected_time']);
+			$this->db->where_in('classtime', $selected_teacher);
+		}
+		// 座位
+		if ($_GET['selected_seat']  != '') {
+			$this->db->where_in('attender', $_GET['selected_seat']);
+		}
+
+		$this->db->order_by('date', 'asc');
+		$schedule_sql = $this->db->get();				
 		$schedule_data = $schedule_sql->result_array();
 
 		$result = array();
+		$result_classname = '';
 		if (count($schedule_data) != 0) {
 			foreach ($schedule_data as $key => $value) {
 				$date = date("Y/m/d", strtotime($value['date']));
@@ -164,10 +214,14 @@ class Abc extends CI_Controller {
 												'attender' => $value['attender'],
 												'scheduleno' => $value['no'],
 												'bookstatus' => $bookstatus);
+
+				$result_classname = $class_data[0]['name'];
 			}
 		}
 
 		$data['result'] = $result;
+		$data['result_classname'] = $result_classname;
+		$data['class_booked'] = ($class_booked) ? 'booked' : '';
 		$this->load->view('selectclass', $data);
 	}
 

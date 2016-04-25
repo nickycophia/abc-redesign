@@ -31,7 +31,7 @@
          </div>
          <div class="lightbox_btn action2">
             <a class="continue" href="course" >重新選課</a>
-            <a class="ok" href="" >確定</a>
+            <a class="ok" href="mybooking" >查看日程表</a>
          </div>
       </div>
    </div>   
@@ -47,7 +47,8 @@
       <div class="main_content">
 
          <?php if (count($result) > 0): ?>
-            <div class="selectclass_result list_area">
+            <div class="selectclass_result list_area <?php echo $class_booked;?>">
+               <div class="selectclass_topic"><?php echo $result_classname;?></div>
                <?php foreach ($result as $key => $value): ?>
                
                <div class="list_row"><!-- row -->
@@ -65,7 +66,7 @@
                   </div>
                   <div class="btn_block">
                      <?php if ($value['bookstatus'] == 'booked') { ?>
-                        <a class="btn_gray disable" href="javascript:;">已預約</a>
+                        <a class="btn_orange booking active" href="javascript:;">預約</a>
                      <?php } else { ?>
                         <a class="btn_orange booking" href="javascript:;" data-scheduleno="<?php echo $value['scheduleno'];?>">預約</a>
                      <?php } ?>

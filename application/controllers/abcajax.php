@@ -49,12 +49,24 @@ class Abcajax extends CI_Controller {
 		}
 
 		$insertdata = array('classno' => $schedule_data[0]['classno'] ,
-						   'date' => date("YmdHis") ,
+						   'date' => date("Ymd") ,
 						   'attender' => $schedule_data[0]['attender'] ,
 						   'scheduleno' => $schedule_data[0]['no'] ,
 						   'memberno' => 1
 						   );
 		$this->db->insert('booking', $insertdata);
+
+		echo 'success';
+	}
+
+	public function cancelbooking()
+	{
+		if (empty($_POST['bookingno'])) {
+			echo 'fail';
+			return;
+		}
+
+		$this->db->delete('booking', array('no' => $_POST['bookingno'], 'memberno' => 1)); 
 
 		echo 'success';
 	}

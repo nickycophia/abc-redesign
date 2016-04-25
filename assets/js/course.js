@@ -5,6 +5,10 @@ $(document).ready(function(){
 		$("#lightbox_area").hide();
 	});
 
+    $("#lightbox_classroom_close").click(function(event) {
+        $("#lightbox_area_classroom").hide();
+    });
+
 	$('.sub_nav_block .disable').click(function(event) {
 		$("#lightbox_area").show();
 		$(".classtype").html($(this).html());
@@ -33,5 +37,14 @@ $(document).ready(function(){
     	$('#classroom_selection option:selected').each(function() {
     		$('#selected_classroom').val($(this).val());
 		});
+    });
+
+    $("#nextstep").click(function(event) {
+        if ($('#selected_classroom').val() == 0) {
+            $("#lightbox_area_classroom").show();
+            return;
+        } else {
+            $(this).closest('form').submit();
+        }
     });
 });

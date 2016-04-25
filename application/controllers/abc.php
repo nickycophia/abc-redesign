@@ -173,12 +173,127 @@ class Abc extends CI_Controller {
 
 	public function mybooking()
 	{
-		$this->load->view('mybooking');
+		// 課程內容
+		$class_data = array();
+		$class_sqldata = array();
+		$class_sql = $this->db->select('*')
+							->from('class')
+							->order_by('no','asc')
+							->get();
+		$class_sqldata = $class_sql->result_array();
+		$class_sql->free_result();
+
+		foreach ($class_sqldata as $key => $value) {
+			$class_data[$value['no']] = $value;
+		}
+
+		// 預約資料
+		$book_data = array();
+		$scheduleno_check = array();
+		$scheduleno_ref = array();
+		$book_sql = $this->db->select('*')
+							->from('booking')
+							->where('memberno', 1)
+							->get();
+		$book_data = $book_sql->result_array();
+		foreach ($book_data as $key => $value) {
+			$scheduleno_check[] = $value['scheduleno'];
+			$scheduleno_ref[$value['scheduleno']] = $value['no'];
+		}
+
+		$booking_list = array();
+		$schedule_data = array();
+		if (count($book_data) > 0) {
+			$schedule_sql = $this->db->select('*')
+								->from('schedule')
+								->where_in('no', $scheduleno_check)
+								->order_by('no','asc')
+								->get();
+			$schedule_data = $schedule_sql->result_array();
+
+			foreach ($schedule_data as $key => $value) {
+				$bookingno = $scheduleno_ref[$value['no']];
+				$date = date("Y/m/d", strtotime($value['date']));
+				$classtime = substr_replace($value['classtime'], ":", 2, 0);
+				$booking_list[$bookingno] = array(	'pic' => $class_data[$value['classno']]['pic'],
+													'classname'	=> $class_data[$value['classno']]['name'],
+													'date' => $date,
+													'classtime' => $classtime);
+			}
+		}
+
+		$data['booking_list'] = $booking_list;
+
+		$this->load->view('mybooking', $data);
 	}
 
 	public function bookingdetail()
 	{
-		$this->load->view('bookingdetail');
+		if (empty($_GET['bookingno'])) {
+			header('Location: '.base_url());
+			return;
+		}
+
+		// 預約資料
+		$book_data = array();
+		$book_sql = $this->db->select('*')
+							->from('booking')
+							->where('no',$_GET['bookingno'])
+							->where('memberno', 1)
+							->get();
+		$book_data = $book_sql->result_array();
+
+		$schedule_data = array();
+		$schedule_sql = $this->db->select('*')
+								->from('schedule')
+								->where('no', $book_data[0]['scheduleno'])
+								->get();
+		$schedule_data = $schedule_sql->result_array();
+
+		// 教室內容
+		$classroom_data = array();
+		$classroom_sql = $this->db->select('*')
+							->from('classroom')
+							->where('no',$schedule_data[0]['classroomno'])
+							->get();
+		$classroom_data = $classroom_sql->result_array();
+
+		// 教室內容
+		$teacher_data = array();
+		$teacher_sql = $this->db->select('*')
+							->from('teacher')
+							->where('no',$schedule_data[0]['teacherno'])
+							->get();
+		$teacher_data = $teacher_sql->result_array();
+
+		// 課程內容
+		$class_data = array();
+		$class_sql = $this->db->select('*')
+							->from('class')
+							->where('no',$schedule_data[0]['classno'])
+							->get();
+		$class_data = $class_sql->result_array();
+
+		$date = date("Y/m/d", strtotime($schedule_data[0]['date']));
+		$classtime = substr_replace($schedule_data[0]['classtime'], ":", 2, 0);
+
+		$info_array = explode("\n", $class_data[0]['info']);
+		$info_html = '<ul>';
+		foreach ($info_array as $infokey => $infoitem) {
+			$info_html .= '<li>'.$infoitem.'</li>';
+		}
+		$info_html .= '</ul>';
+		
+		$detail = array('pic' => $class_data[0]['pic'],
+						'date' => $date,
+						'classname' => $class_data[0]['name'],
+						'classtime' => $classtime,
+						'classroom' => $classroom_data[0]['name'],
+						'attender' => $schedule_data[0]['attender'],
+						'teacher' => $teacher_data[0]['name'],
+						'info' => $info_html);
+		$data['detail'] = $detail;
+		$this->load->view('bookingdetail', $data);
 	}
 
 	public function generate_schedule()

@@ -58,6 +58,7 @@ $route['more'] = "abc/more";
 $route['collect'] = "abc/collect";
 
 $route['abcajax/booking'] = 'abcajax/booking';
+$route['abcajax/cancelbooking'] = 'abcajax/cancelbooking';
 
 $route['404_override'] = '';
 

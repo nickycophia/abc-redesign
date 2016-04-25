@@ -15,9 +15,7 @@ $(document).ready(function(){
                     $("#lightbox_area").show();
                 }
                 else {
-                    $(".lightbox_name").html("發生錯誤");
-                    $(".lightbox_txt").html("請稍後再試");
-                    $("#lightbox_area").show();
+                    alert("發生錯誤，請稍後再試")
                 }
             }
         });

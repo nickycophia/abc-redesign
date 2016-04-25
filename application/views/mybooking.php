@@ -23,33 +23,32 @@
    <![endif]-->
 </head>
 <body>
-   <div id="lightbox_area" class="lightbox_area" style="display: display;">
+   <div id="cancel_step_one" class="lightbox_area" style="display: none;">
       <div class="lightbox">
          <div class="lightbox_topic">
             <div class="lightbox_name">取消預約</div>
-            <div class="lightbox_txt">您確定要取消 4/20 18:00的<br>日本媽媽家常菜<br>料理課嗎？</div>
+            <div class="lightbox_txt">您確定要取消 該課程嗎？</div>
          </div>
          <div class="lightbox_btn action2">
             <a class="keep" href="" >保留預約</a>
-            <a class="delete" href="" >確定取消</a>
+            <a class="delete" href="javascript:;" >確定取消</a>
          </div>
       </div>
-
+   </div>
+   <div id="cancel_step_otwo" class="lightbox_area" style="display: none;">
       <div class="lightbox">
          <div class="lightbox_topic">
             <div class="lightbox_name">取消預約成功</div>
          </div>
          <div class="lightbox_btn">
-            <a class="ok" href="" >確定</a>
+            <a class="ok" id="cancel_ok" href="" >確定</a>
          </div>
       </div>
-   </div>   
+   </div> 
+
    <header>
       <div class="header">
          <h1 class="header_name">我的日程表</h1>
-         <!-- <div class="header_btn">
-         <a class="back"href="course"></a>
-         </div> -->
       </div>
    </header>
    <main class="main">
@@ -57,102 +56,45 @@
          <nav class="sub_nav">
             <ul class="sub_nav_block">
                <li><a class="active" href="">確認日程</a></li>
-               <li><a href="javascript:;">上課進度</a></li>
+               <li><a href="history">上課紀錄</a></li>
             </ul>
          </nav>
-
-         <div class="selectclass_null" style="display:block;"><!-- null -->
-            <div class="null_txt">
-               <p>您目前還沒有預約課程喔！</p>
-            </div>
-         </div>
          
-         <div class="mybooking_result list_area">
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
-                  </div>
-               </div>
-               <div class="btn_block">
-                  <a class="btn_gray cancel"href="" >取消預約</a>
-                  <a class="btn_orange go_bookingdetail"href="bookingdetail" >查看詳情</a>
+         <?php if (count($booking_list) == 0): ?>
+            <div class="selectclass_null" style="display:block;">
+               <div class="null_txt">
+                  <p>您目前還沒有預約課程喔！</p>
                </div>
             </div>
-            
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
-                  </div>
-               </div>
-               <div class="btn_block">
-                  <a class="btn_gray cancel"href="" >取消預約</a>
-                  <a class="btn_orange go_bookingdetail"href="bookingdetail" >查看詳情</a>
-               </div>
-            </div>
+         <?php endif;?>
 
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
+         <?php if (count($booking_list) > 0): ?>
+            <div class="mybooking_result list_area">
+               
+               <?php foreach ($booking_list as $key => $value): ?>
+               
+                  <div class="list_row"><!-- row -->
+                     <div class="list_pic">
+                        <img src="assets/img/<?php echo $value['pic'];?>" alt="">
+                     </div>
+                     <div class="list_topic">
+                        <h4 class="list_title"><?php echo $value['classname'];?></h4>
+                        <div class="list_date">
+                           <span class="year"><?php echo $value['date'];?></span>
+                           <span class="time"><?php echo $value['classtime'];?></span>
+                        </div>
+                     </div>
+                     <div class="btn_block">
+                        <a class="btn_gray cancel cancel_booking_btn" href="javasciprt:;" data-bookingno="<?php echo $key;?>">取消預約</a>
+                        <a class="btn_orange go_bookingdetail" href="bookingdetail?bookingno=<?php echo $key;?>">查看詳情</a>
+                     </div>
                   </div>
-               </div>
-               <div class="btn_block">
-                  <a class="btn_gray cancel"href="" >取消預約</a>
-                  <a class="btn_orange go_bookingdetail"href="bookingdetail" >查看詳情</a>
-               </div>
-            </div>
 
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
-                  </div>
-               </div>
-               <div class="btn_block">
-                  <a class="btn_gray cancel"href="" >取消預約</a>
-                  <a class="btn_orange go_bookingdetail"href="bookingdetail" >查看詳情</a>
-               </div>
-            </div>
+               <?php endforeach; ?>
 
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
-                  </div>
-               </div>
-               <div class="btn_block">
-                  <a class="btn_gray cancel"href="" >取消預約</a>
-                  <a class="btn_orange go_bookingdetail"href="bookingdetail" >查看詳情</a>
-               </div>
             </div>
-         </div>
+         <?php endif;?>
+
       </div>
    </main>
    <footer class="footer">
@@ -160,13 +102,14 @@
          <ul>
             <li><a class="news" href="index.php">首頁</a></li>
             <li><a class="collect" href="">收藏</a></li>
-            <li><a class="course" href="">選課</a></li>
+            <li><a class="course" href="course">選課</a></li>
             <li><a class="booking active" href="">日程表</a></li>
             <li><a class="more" href="">更多</a></li>
          </ul>
       </nav>
    </footer>
+<input type="hidden" id="prepare_cancel_bookingno" name="prepare_cancel_bookingno">
 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="assets/js/selectday.js"></script> 
+<script type="text/javascript" src="assets/js/booking.js"></script> 
 </body>
 </html>

@@ -25,7 +25,7 @@
    <![endif]-->
 </head>
 <body>
-   <div id="lightbox_area" class="lightbox_area" >
+   <div id="lightbox_area" class="lightbox_area" style="display: none;">
       <div class="lightbox">
          <div class="lightbox_topic">
             <div class="lightbox_name">無法選擇<span class="classtype"></span>類別</div>
@@ -35,16 +35,19 @@
             <a class="ok" href="javascript:;" id="lightbox_confirm">確定</a>
          </div>
       </div>
+   </div>
 
+   <div id="lightbox_area_classroom" class="lightbox_area" style="display: none;">
       <div class="lightbox">
          <div class="lightbox_topic studio">
             <div class="lightbox_name">請選擇上課地點</div>
          </div>
          <div class="lightbox_btn">
-            <a class="ok" href="javascript:;" id="lightbox_confirm">確定</a>
+            <a class="ok" href="javascript:;" id="lightbox_classroom_close">確定</a>
          </div>
       </div>
-   </div>   
+   </div> 
+   
    <header>
       <div class="header">
          <h1 class="header_name">選課系統</h1>
@@ -93,9 +96,9 @@
          </div>
          <form action="selectday" method="get">
 	         <div class="btn_block">
-	            <a class="btn_orange next" href="javascript:;" onclick="$(this).closest('form').submit()">下一步</a>
+	            <a id="nextstep" class="btn_orange next" href="javascript:;">下一步</a>
    				<input id="selected_class" name="selected_class" type="hidden" value="3">
-   				<input id="selected_classroom" name="selected_classroom" type="hidden" value="1">
+   				<input id="selected_classroom" name="selected_classroom" type="hidden" value="0">
 	         </div>
 	     </form>
       </div>
@@ -106,7 +109,7 @@
             <li><a class="news" href="index.php">首頁</a></li>
             <li><a class="collect" href="">收藏</a></li>
             <li><a class="course active" href="">選課</a></li>
-            <li><a class="booking" href="">日程表</a></li>
+            <li><a class="booking" href="mybooking">日程表</a></li>
             <li><a class="more" href="">更多</a></li>
          </ul>
       </nav>

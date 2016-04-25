@@ -35,28 +35,22 @@
       <div class="main_content">
          <div class="bookingdetail_area">
             <div class="list_pic">
-               <img src="assets/img/f4_1.jpg" alt="">
+               <img src="assets/img/<?php echo $detail['pic'];?>" alt="">
             </div>
             <div class="detail_all">
                <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
+                  <h4 class="list_title"><?php echo $detail['classname'];?></h4>
                   <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
+                     <span class="year"><?php echo $detail['date'];?></span>
+                     <span class="time"><?php echo $detail['classtime'];?></span>
                   </div>
                   <div class="list_type">料理</div>
-                  <div class="list_studio">南港教室</div>
-                  <div class="list_teacher">林小美</div>
-                  <div class="list_student">4</div>
+                  <div class="list_studio"><?php echo $detail['classroom'];?></div>
+                  <div class="list_teacher"><?php echo $detail['teacher'];?></div>
+                  <div class="list_student"><?php echo $detail['attender'];?></div>
                </div>
                <div class="course_detail">
-                  <ul>
-                     <li>大根煮脆雞</li>
-                     <li>雜穀飯</li>
-                     <li>和辛子野菜</li>
-                     <li>野菜味噌湯</li>
-                     <li>簡易草莓大福</li>
-                  </ul>
+                  <?php echo $detail['info'];?>
                </div>
             </div>
          </div>

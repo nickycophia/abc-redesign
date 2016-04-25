@@ -35,7 +35,7 @@
       <div class="main_content">
          <nav class="sub_nav">
             <ul class="sub_nav_block">
-               <li><a href="">確認日程</a></li>
+               <li><a href="mybooking">確認日程</a></li>
                <li><a class="active" href="javascript:;">上課進度</a></li>
             </ul>
          </nav>
@@ -46,87 +46,6 @@
             </div>
          </div>
          
-         <div class="history_result list_area">
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
-                  </div>
-               </div>
-               <div class="btn_block">
-                  <a class="btn_orange go_bookingdetail"href="historydetail" >查看詳情</a>
-               </div>
-            </div>
-            
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
-                  </div>
-               </div>
-               <div class="btn_block">
-                  <a class="btn_orange go_bookingdetail"href="historydetail" >查看詳情</a>
-               </div>
-            </div>
-
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
-                  </div>
-               </div>
-               <div class="btn_block">
-                  <a class="btn_orange go_bookingdetail"href="historydetail" >查看詳情</a>
-               </div>
-            </div>
-
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
-                  </div>
-               </div>
-               <div class="btn_block">
-                  <a class="btn_orange go_bookingdetail"href="historydetail" >查看詳情</a>
-               </div>
-            </div>
-
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
-                  </div>
-               </div>
-               <div class="btn_block">
-                  <a class="btn_orange go_bookingdetail"href="historydetail" >查看詳情</a>
-               </div>
-            </div>
-         </div>
       </div>
    </main>
    <footer class="footer">

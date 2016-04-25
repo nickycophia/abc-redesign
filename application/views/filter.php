@@ -27,7 +27,7 @@
       <div class="header">
          <h1 class="header_name">更多篩選設定</h1>
          <div class="header_btn">
-            <a class="back"href="selectday"></a>
+            <a class="back"href="selectday?selected_class=<?php echo $_GET['selected_class'];?>&selected_classroom=<?php echo $_GET['selected_classroom'];?>"></a>
          </div>
       </div>
    </header>

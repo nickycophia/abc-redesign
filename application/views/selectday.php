@@ -180,7 +180,7 @@
    </main>
    <footer class="footer">
       <div class="btn_block filter">
-         <a class="btn_filter filtered" href="filter" >更多篩選設定</a>
+         <a class="btn_filter filtered" href="filter?selected_class=<?php echo $_GET['selected_class'];?>&selected_classroom=<?php echo $_GET['selected_classroom'];?>" >更多篩選設定</a>
       </div>
    </footer>
 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>

@@ -44,6 +44,10 @@ $route['newsdetail'] = "abc/newsdetail";
 $route['course'] = "abc/course";
 $route['selectday'] = "abc/selectday";
 $route['selectclass'] = "abc/selectclass";
+$route['filter'] = "abc/filter";
+$route['filterteacher'] = "abc/filterteacher";
+$route['filtertime'] = "abc/filtertime";
+$route['filterseat'] = "abc/filterseat";
 
 $route['mybooking'] = "abc/mybooking";
 $route['bookingdetail'] = "abc/bookingdetail";

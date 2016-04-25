@@ -307,6 +307,22 @@ class Abc extends CI_Controller {
 	{
 		$this->load->view('historydetail');
 	}
+	public function filter()
+	{
+		$this->load->view('filter');
+	}
+	public function filterteacher()
+	{
+		$this->load->view('filterteacher');
+	}
+	public function filtertime()
+	{
+		$this->load->view('filtertime');
+	}
+	public function filterseat()
+	{
+		$this->load->view('filterseat');
+	}
 }
 
 /* End of file welcome.php */

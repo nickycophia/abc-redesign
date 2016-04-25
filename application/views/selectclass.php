@@ -23,7 +23,7 @@
    <![endif]-->
 </head>
 <body>
-   <div id="lightbox_area" class="lightbox_area">
+   <div id="lightbox_area" class="lightbox_area" style="display:none;">
       <div class="lightbox selectclass">
          <div class="lightbox_topic">
             <div class="lightbox_name">預約成功</div>
@@ -56,7 +56,7 @@
             </div>
          </div> 
             
-         <div class="selectclass_result list_area">
+         <div class="selectclass_result list_area booked">
             <div class="list_row"><!-- row -->
                <div class="list_pic">
                   <img src="assets/img/f4_1.jpg" alt="">
@@ -71,7 +71,7 @@
                   <div class="list_student">2</div>
                </div>
                <div class="btn_block">
-                  <a class="btn_orange booking"href="" >預約</a>
+                  <a class="btn_orange booking active"href="" >預約</a>
                </div>
             </div>
             

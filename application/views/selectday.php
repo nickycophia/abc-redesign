@@ -125,6 +125,123 @@
          <a class="btn_filter filtered" href="filter" >更多篩選設定</a>
       </div>
    </footer>
+   <div class="filter_area to_filter">
+      <header>
+         <div class="header">
+            <h1 class="header_name">更多篩選設定</h1>
+            <div class="header_btn">
+               <a class="back"href="selectday"></a>
+            </div>
+         </div>
+      </header>
+      <main class="main no_sub-nav">
+         <div class="main_content">
+            <div class="filter_setting">
+               <div class="filter_topic">篩選工具幫您更快找到適合項目</div>
+               <div class="filter_cell go_filter">
+                  <a href="filterteacher" class="teacher">
+                     選擇老師
+                     <span>不指定</span>
+                  </a>
+                  <a href="filtertime" class="time">
+                     選擇上課時段
+                     <span>10:00,13:00</span>
+                  </a>
+                  <a href="filterseat" class="seat">
+                     選擇座位數
+                     <span>不指定</span>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </main>
+      <footer class="footer">
+         <div class="btn_block filter">
+            <a class="btn_filter remove" href="" >清除篩選設定</a>
+         </div>
+      </footer>
+   </div>
+   <div class="filter_area to_filterteacher">
+      <header>
+         <div class="header">
+            <h1 class="header_name">選擇老師</h1>
+            <div class="header_btn">
+               <a class="back"href="filter"></a>
+            </div>
+         </div>
+      </header>
+      <main class="main no_sub-nav">
+         <div class="main_content">
+            <div class="filter_setting">
+               <div class="filter_cell">
+                  <a href="" class="no_assign active">不指定</a>
+               </div>
+               <div class="filter_cell">
+                  <a href="" class="teacher">林小美</a>
+                  <a href="" class="teacher">張香香</a>
+                  <a href="" class="teacher">王小華</a>
+                  <a href="" class="teacher">蔡嘉惠</a>
+               </div>
+            </div>
+         </div>
+      </main>
+      <footer class="footer">
+      </footer>
+   </div>
+   <div class="filter_area to_filtertime">
+      <header>
+         <div class="header">
+            <h1 class="header_name">選擇時間</h1>
+            <div class="header_btn">
+               <a class="back"href="filter"></a>
+            </div>
+         </div>
+      </header>
+      <main class="main no_sub-nav">
+         <div class="main_content">
+            <div class="filter_setting">
+               <div class="filter_cell">
+                  <a href="" class="no_assign">不指定</a>
+               </div>
+               <div class="filter_cell">
+                  <a href="" class="time active">10:00</a>
+                  <a href="" class="time active">13:00</a>
+                  <a href="" class="time">16:00</a>
+                  <a href="" class="time">19:00</a>
+               </div>
+            </div>
+         </div>
+      </main>
+      <footer class="footer">
+      </footer>
+   </div>
+   <div class="filter_area to_filterseat">
+      <header>
+         <div class="header">
+            <h1 class="header_name">選擇剩餘座位數</h1>
+            <div class="header_btn">
+               <a class="back"href="filter"></a>
+            </div>
+         </div>
+      </header>
+      <main class="main no_sub-nav">
+         <div class="main_content">
+            <div class="filter_setting">
+               <div class="filter_cell">
+                  <a href="" class="no_assign">不指定</a>
+               </div>
+               <div class="filter_cell">
+                  <a href="" class="seat active">4</a>
+                  <a href="" class="seat">3</a>
+                  <a href="" class="seat">2</a>
+                  <a href="" class="seat">1</a>
+               </div>
+            </div>
+         </div>
+      </main>
+      <footer class="footer">
+      </footer>
+   </div>
 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="assets/js/selectday.js"></script> 
 </body>

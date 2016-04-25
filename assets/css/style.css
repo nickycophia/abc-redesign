@@ -477,6 +477,9 @@ footer{
 	width: 208px;
 	height: 208px;
 }
+.selectclass_result .list_pic{
+	display: none;
+}
 .selectclass_result .list_topic,
 .mybooking_result .list_topic,
 .history_result .list_topic{
@@ -495,10 +498,16 @@ footer{
 .history_result .list_title{
 	padding-bottom: 10px;
 }
+.selectclass_result .list_title{
+	display: none;
+}
 .list_date{
 	color: #737373;
 	font-size: 28px;
 	font-family: arial;
+}
+.selectclass_result .list_date{
+	font-size: 32px;
 }
 .list_date .year{
 	padding-right: 5px;
@@ -536,7 +545,18 @@ footer{
 	font-size: 28px;
 }
 .selectclass_result .booking{
-	width: 120px;
+	width: 166px;
+}
+.booked .booking:not(.active){
+	display: none;
+}
+.booked .active{
+	background: linear-gradient(to bottom, #E5E5E5 0%,#C2C2C2 100%);
+	color: #737373;
+}
+.booked .active:before{
+	content: "取消";
+	display: inline-block;
 }
 .lightbox_btn.action2 a{
 	float: left;
@@ -632,6 +652,15 @@ footer{
     font-family: 'PingFangTC-Regular',微軟正黑體;
 }
 /*filter*/
+.filter_area{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 640px;
+	height: 100%;
+	background: #fafafa;
+
+}
 .filter_topic{
 	color: #737373;
     font-size: 34px;

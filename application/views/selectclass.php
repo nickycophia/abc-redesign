@@ -57,6 +57,7 @@
          </div> 
             
          <div class="selectclass_result list_area booked">
+            <div class="selectclass_topic">日本媽媽家常菜 南港教室</div>
             <div class="list_row"><!-- row -->
                <div class="list_pic">
                   <img src="assets/img/f4_1.jpg" alt="">

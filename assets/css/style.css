@@ -774,3 +774,47 @@ hr{
 .register_area p a{
 	color: #FF2B6D;
 }
+/*policy*/
+.policy_area{
+	padding: 30px;
+	list-style: 36px;
+}
+.policy_topic{
+	color: #4a4a4a;
+    font-size: 24px;
+    font-family: 'PingFangTC-Regular',微軟正黑體;
+    padding-bottom: 30px;
+}
+.policy_title{
+	color: #4a4a4a;
+    font-size: 24px;
+    font-family: 'PingFangTC-Medium',微軟正黑體;
+    padding-bottom: 30px;
+}
+.policy_list{
+	margin-bottom: 60px;
+}
+.policy_area p,
+.policy_list > li{
+	color: #737373;
+    font-size: 24px;
+    font-family: 'PingFangTC-Regular',微軟正黑體;
+    margin-bottom: 10px;
+}
+.policy_list > li{
+	list-style: decimal;
+	list-style-position: outside;
+	margin-left: 30px;
+}
+.policy_list2 {
+	counter-reset:list 0;
+}
+.policy_list2 > li{
+	counter-increment:list;
+	color: #9b9b9b;
+	margin-top: 10px;
+}
+.policy_list2 li:before{
+	content:"(" counter(list) ")";
+	display:inline-block;
+  }

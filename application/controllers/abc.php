@@ -335,6 +335,10 @@ class Abc extends CI_Controller {
 	{
 		$this->load->view('register');
 	}
+	public function policy()
+	{
+		$this->load->view('policy');
+	}
 }
 
 /* End of file welcome.php */

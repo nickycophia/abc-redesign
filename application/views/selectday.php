@@ -193,7 +193,7 @@
          <div class="header">
             <h1 class="header_name">更多篩選設定</h1>
             <div class="header_btn">
-               <a id="close_to_filter" class="back"href="selectday"></a>
+               <a id="close_to_filter" class="back" href="javascript:;"></a>
             </div>
          </div>
       </header>

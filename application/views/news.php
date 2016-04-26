@@ -4,9 +4,8 @@
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <meta name="viewport" content="width=640px">
-
-   <!-- <meta content=”yes” name=”apple-mobile-web-app-capable” />
-   <meta name="viewport" content="minimal-ui"> -->
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <!-- <meta name="viewport" content="minimal-ui"> -->
 
    <link rel="stylesheet"  type="text/css" href="assets/css/normalize.css" />
    <link rel="stylesheet"  type="text/css" href="assets/css/style.css" />

@@ -19,16 +19,21 @@ class Abc extends CI_Controller {
 
 	public function index()
 	{
+		$dataArr = $this->session_info();
 		$this->load->view('news');
 	}
 
 	public function newsdetail()
 	{
+		$dataArr = $this->session_info();
 		$this->load->view('newsdetail');
 	}
 
 	public function course()
 	{
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'course');
+
 		// 教室
 		$classroom_data = array();
 		$classroom_sql = $this->db->select('*')
@@ -43,7 +48,7 @@ class Abc extends CI_Controller {
 		$book_data_tmp = array();
 		$book_sql = $this->db->select('*')
 							->from('booking')
-							->where('memberno', 1)
+							->where('memberno', $dataArr[0]['no'])
 							->order_by('no','asc')
 							->get();
 		$book_data_tmp = $book_sql->result_array();
@@ -83,6 +88,9 @@ class Abc extends CI_Controller {
 
 	public function selectday()
 	{
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'selectday');
+
 		if (empty($_GET['selected_class']) || 
 			empty($_GET['selected_classroom'])) {
 			header('Location: '.base_url());
@@ -119,6 +127,9 @@ class Abc extends CI_Controller {
 
 	public function selectclass()
 	{
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'selectclass');
+
 		if (empty($_GET['selected_day']) || 
 			empty($_GET['selected_month']) || 
 			empty($_GET['selected_class']) || 
@@ -155,7 +166,7 @@ class Abc extends CI_Controller {
 		$class_booked = false;
 		$book_sql = $this->db->select('*')
 							->from('booking')
-							->where('memberno', 1)
+							->where('memberno', $dataArr[0]['no'])
 							->order_by('no','asc')
 							->get();
 		$book_data_tmp = $book_sql->result_array();
@@ -227,6 +238,9 @@ class Abc extends CI_Controller {
 
 	public function mybooking()
 	{
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'mybooking');
+
 		// 課程內容
 		$class_data = array();
 		$class_sqldata = array();
@@ -247,7 +261,7 @@ class Abc extends CI_Controller {
 		$scheduleno_ref = array();
 		$book_sql = $this->db->select('*')
 							->from('booking')
-							->where('memberno', 1)
+							->where('memberno', $dataArr[0]['no'])
 							->get();
 		$book_data = $book_sql->result_array();
 		foreach ($book_data as $key => $value) {
@@ -283,6 +297,9 @@ class Abc extends CI_Controller {
 
 	public function bookingdetail()
 	{
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'bookingdetail');
+
 		if (empty($_GET['bookingno'])) {
 			header('Location: '.base_url());
 			return;
@@ -293,7 +310,7 @@ class Abc extends CI_Controller {
 		$book_sql = $this->db->select('*')
 							->from('booking')
 							->where('no',$_GET['bookingno'])
-							->where('memberno', 1)
+							->where('memberno', $dataArr[0]['no'])
 							->get();
 		$book_data = $book_sql->result_array();
 
@@ -446,6 +463,92 @@ class Abc extends CI_Controller {
 		}
 	}
 
+	public function more()
+	{
+		$this->load->view('more');
+	}
+
+	public function collect()
+	{
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'collect');
+
+		$this->load->view('collect');
+	}
+	public function history()
+	{
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'history');
+
+		$this->load->view('history');
+	}
+	public function historydetail()
+	{
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'historydetail');
+
+		$this->load->view('historydetail');
+	}
+
+	public function login()
+	{
+		$dataArr = $this->session_info();
+		if (count($dataArr) > 0) {
+			header("Location: ".base_url());
+		}
+		$this->load->view('login');
+	}
+	public function forgetpsw()
+	{
+		$dataArr = $this->session_info();
+		if (count($dataArr) > 0) {
+			header("Location: ".base_url());
+		}
+		$this->load->view('forgetpsw');
+	}
+	public function register()
+	{
+		$dataArr = $this->session_info();
+		if (count($dataArr) > 0) {
+			header("Location: ".base_url());
+		}
+		$this->load->view('register');
+	}
+
+	public function logout()
+	{
+		$this->nativesession->delete('LOGIN_ID');
+		header('location:'.base_url());
+	}
+
+	public function policy()
+	{
+		$this->load->view('policy');
+	}
+
+	// 登入資訊
+	private function session_info()
+	{
+		$LOGIN_ID = $this->nativesession->get('LOGIN_ID');
+		if( empty($LOGIN_ID) ) {
+			$dataArr = array();
+			return $dataArr;
+		}
+		else {
+			$whereArr = array( 'no' => $LOGIN_ID );
+			$query = $this->db->get_where('member',$whereArr);
+			$dataArr = $query->result_array();
+			return $dataArr;
+		}
+	}
+
+	private function check_login($dataArr, $redirect)
+	{
+		if (count($dataArr) == 0) {
+			header("Location: ".base_url()."login?redirect=".$redirect);
+		}
+	}
+
 	private function gen_classno($month)
 	{
 		
@@ -552,56 +655,6 @@ class Abc extends CI_Controller {
 				break;
 		}
 		return $teacher_ref;
-	}
-
-	public function more()
-	{
-		$this->load->view('more');
-	}
-
-	public function collect()
-	{
-		$this->load->view('collect');
-	}
-	public function history()
-	{
-		$this->load->view('history');
-	}
-	public function historydetail()
-	{
-		$this->load->view('historydetail');
-	}
-	public function filter()
-	{
-		$this->load->view('filter');
-	}
-	public function filterteacher()
-	{
-		$this->load->view('filterteacher');
-	}
-	public function filtertime()
-	{
-		$this->load->view('filtertime');
-	}
-	public function filterseat()
-	{
-		$this->load->view('filterseat');
-	}
-	public function login()
-	{
-		$this->load->view('login');
-	}
-	public function forgetpsw()
-	{
-		$this->load->view('forgetpsw');
-	}
-	public function register()
-	{
-		$this->load->view('register');
-	}
-	public function policy()
-	{
-		$this->load->view('policy');
 	}
 }
 

@@ -65,6 +65,10 @@ $route['policy'] = "abc/policy";
 
 $route['more'] = "abc/more";
 $route['collect'] = "abc/collect";
+$route['logout'] = "abc/logout";
+
+$route['abcajax/login'] = 'abcajax/login';
+$route['abcajax/register'] = 'abcajax/register';
 
 $route['abcajax/booking'] = 'abcajax/booking';
 $route['abcajax/cancelbooking'] = 'abcajax/cancelbooking';

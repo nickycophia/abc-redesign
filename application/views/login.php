@@ -23,14 +23,14 @@
    <![endif]-->
 </head>
 <body>
-   <div id="lightbox_area" class="lightbox_area" style="display:block;">
+   <div id="alertMsg" class="lightbox_area" style="display:none;">
       <div class="lightbox">
          <div class="lightbox_topic">
             <div class="lightbox_name">登入失敗</div>
             <div class="lightbox_txt">請再檢查一次帳號或密碼</div>
          </div>
          <div class="lightbox_btn">
-            <a class="ok" href="" >確定</a>
+            <a class="ok" href="javascript:;" id="msgcomfirm">確定</a>
          </div>
       </div>
    </div>   
@@ -45,15 +45,15 @@
    <main class="main no_sub-nav">
       <div class="main_content">
          <div class="form_area login_area">  
-            <input type="text" placeholder="會員卡卡號">
-            <input type="text" placeholder="會員密碼">
+            <input type="text" name="account" id="account" placeholder="會員卡卡號">
+            <input type="text" name="password" id="password" placeholder="會員密碼">
             <div class="btn_block">
-               <a class="btn_orange login"href="" >登入</a>
+               <a class="btn_orange login" href="javascript:;" name="send" id="send" >登入</a>
             </div>
-            <a href="forget_psw" class="forget_psw">忘記密碼？</a>
+            <a href="forgetpsw" class="forget_psw">忘記密碼？</a>
             <hr>
             <div class="btn_block">
-               <a class="btn_green register"href="" >會員註冊</a>
+               <a class="btn_green register"href="register" >會員註冊</a>
             </div>
          </div>
          
@@ -62,6 +62,7 @@
    <footer class="footer">
    </footer>
 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="assets/js/selectday.js"></script> 
+<script type="text/javascript">var BASE = '<?php echo base_url();?>';</script>
+<script type="text/javascript" src="assets/js/login.js"></script> 
 </body>
 </html>

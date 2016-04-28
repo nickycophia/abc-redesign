@@ -25,7 +25,7 @@
 <body>
    <header>
       <div class="header">
-         <h1 class="header_name">日本媽媽家常菜</h1>
+         <h1 class="header_name"><?php echo $detail['classname'];?></h1>
          <div class="header_btn">
          <a class="back"href="mybooking"></a>
          </div>

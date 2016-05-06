@@ -19,16 +19,165 @@ class Abc extends CI_Controller {
 
 	public function index()
 	{
+		$dataArr = $this->session_info();
 		$this->load->view('news');
+	}
+
+	public function theme()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('theme');
+	}
+
+	public function theme1()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('theme1');
+	}
+
+	public function theme2()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('theme2');
+	}
+
+	public function news1()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('news1');
+	}
+
+	public function news2()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('news2');
+	}
+
+	public function news3()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('news3');
+	}
+
+	public function oneday()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('oneday');
+	}
+
+	public function oneday1()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('oneday1');
+	}
+
+	public function oneday2()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('oneday2');
+	}
+
+	public function oneday3()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('oneday3');
+	}
+
+	public function oneday4()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('oneday4');
+	}
+
+	public function studio()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('studio');
+	}
+
+	public function studio1()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('studio1');
+	}
+
+		public function studio2()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('studio2');
+	}
+
+		public function studio3()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('studio3');
+	}	
+
+	public function abcclass()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcclass');
+	}
+
+	public function abcclass1()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcclass1');
+	}
+
+	public function abcclass2()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcclass2');
+	}
+
+	public function abcclass_dessert()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcclass_dessert');
+	}
+
+	public function abcclass_bread()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcclass_bread');
+	}
+
+	public function abcabout()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcabout');
+	}
+
+	public function abcprice()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcprice');
+	}
+
+	public function abcprice_bread()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcprice_bread');
+	}
+
+	public function abcprice_dessert()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcprice_dessert');
 	}
 
 	public function newsdetail()
 	{
+		$dataArr = $this->session_info();
 		$this->load->view('newsdetail');
 	}
 
 	public function course()
 	{
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'course');
+
 		// 教室
 		$classroom_data = array();
 		$classroom_sql = $this->db->select('*')
@@ -38,12 +187,28 @@ class Abc extends CI_Controller {
 		$classroom_data = $classroom_sql->result_array();
 		$classroom_sql->free_result();
 
+		// 預約資料
+		$booked_classno_data = array();
+		$book_data_tmp = array();
+		$book_sql = $this->db->select('*')
+							->from('booking')
+							->where('memberno', $dataArr[0]['no'])
+							->order_by('no','asc')
+							->get();
+		$book_data_tmp = $book_sql->result_array();
+		foreach ($book_data_tmp as $key => $value) {
+			$booked_classno_data[] = $value['classno'];
+		}
+
 		// 課程
 		$class_data = array();
-		$class_sql = $this->db->select('*')
-								->from('class')
-								->order_by('no','asc')
-								->get();
+		$this->db->select('*');
+		$this->db->from('class');
+		if (count($booked_classno_data) > 0) {
+			$this->db->where_not_in('no', $booked_classno_data);
+		}
+		$this->db->order_by('no','asc');
+		$class_sql = $this->db->get();
 		$class_data = $class_sql->result_array();
 		$class_sql->free_result();
 
@@ -67,23 +232,283 @@ class Abc extends CI_Controller {
 
 	public function selectday()
 	{
-		
-		$this->load->view('selectday');
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'selectday');
+
+		if (empty($_GET['selected_class']) || 
+			empty($_GET['selected_classroom'])) {
+			header('Location: '.base_url());
+			return;
+		}
+
+		// 課程
+		$class_data = array();
+		$class_sql = $this->db->select('*')
+								->from('class')
+								->where('no',$_GET['selected_class'])
+								->get();
+		$class_data = $class_sql->result_array();
+		$class_sql->free_result();
+
+		// 老師資料
+		$teacher_data = array();
+		$teacher_data_tmp = array();
+		$teacher_sql = $this->db->select('*')
+							->from('teacher')
+							->where('classroomno', $_GET['selected_classroom'])
+							->order_by('no','asc')
+							->get();
+		$teacher_data_tmp = $teacher_sql->result_array();
+		foreach ($teacher_data_tmp as $key => $value) {
+			$teacher_data[$value['no']] = $value['name'];
+		}
+
+		$data['classmonth'] = $class_data[0]['classmonth'];
+		$data['classteacher'] = $teacher_data;
+
+		$this->load->view('selectday',$data);
 	}
 
 	public function selectclass()
 	{
-		$this->load->view('selectclass');
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'selectclass');
+
+		if (empty($_GET['selected_day']) || 
+			empty($_GET['selected_month']) || 
+			empty($_GET['selected_class']) || 
+			empty($_GET['selected_classroom'])) {
+			header('Location: '.base_url());
+			return;
+		}
+
+		// 課程資料
+		$class_data = array();
+		$class_sql = $this->db->select('*')
+								->from('class')
+								->where('no',$_GET['selected_class'])
+								->get();
+		$class_data = $class_sql->result_array();
+		$class_sql->free_result();
+
+		// 老師資料
+		$teacher_data = array();
+		$teacher_data_tmp = array();
+		$teacher_sql = $this->db->select('*')
+							->from('teacher')
+							->where('classroomno', $_GET['selected_classroom'])
+							->order_by('no','asc')
+							->get();
+		$teacher_data_tmp = $teacher_sql->result_array();
+		foreach ($teacher_data_tmp as $key => $value) {
+			$teacher_data[$value['no']] = $value['name'];
+		}
+
+		// 預約資料
+		$book_data = array();
+		$book_data_tmp = array();
+		$class_booked = false;
+		$book_sql = $this->db->select('*')
+							->from('booking')
+							->where('memberno', $dataArr[0]['no'])
+							->order_by('no','asc')
+							->get();
+		$book_data_tmp = $book_sql->result_array();
+		foreach ($book_data_tmp as $key => $value) {
+			$book_data[] = $value['scheduleno'];
+			if ($value['classno'] == $_GET['selected_class']) {
+				$class_booked = true;
+			}
+		}
+
+		$selected_date = array();
+		$selected_day_tmp = explode(",", $_GET['selected_day']);
+		foreach ($selected_day_tmp as $key => $value) {
+			$item = "20160".$_GET['selected_month'].sprintf("%02d", $value);
+			$selected_date[$item] = intval($item);
+		}
+		$schedule_data = array();
+
+		$this->db->select('*');
+		$this->db->from('schedule');
+		$this->db->where('classno', $_GET['selected_class']);
+		$this->db->where('classroomno', $_GET['selected_classroom']);
+		$this->db->where_in('date', $selected_date);
+
+		// 老師
+		if ($_GET['selected_teacher'] != '') {
+			$selected_teacher = explode(",", $_GET['selected_teacher']);
+			$this->db->where_in('teacherno', $selected_teacher);
+		}
+		// 時間
+		if ($_GET['selected_time']  != '') {
+			$selected_teacher = explode(",", $_GET['selected_time']);
+			$this->db->where_in('classtime', $selected_teacher);
+		}
+		// 座位
+		if ($_GET['selected_seat']  != '') {
+			$this->db->where_in('attender', $_GET['selected_seat']);
+		}
+
+		$this->db->order_by('date', 'asc');
+		$schedule_sql = $this->db->get();				
+		$schedule_data = $schedule_sql->result_array();
+
+		$result = array();
+		$result_classname = '';
+		if (count($schedule_data) != 0) {
+			foreach ($schedule_data as $key => $value) {
+				$date = date("Y/m/d", strtotime($value['date']));
+				$classtime = substr_replace($value['classtime'], ":", 2, 0);
+				$bookstatus = (in_array($value['no'], $book_data)) ? 'booked' : 'available';
+				$result[$value['no']] = array(	'pic' => $class_data[0]['pic'],
+												'classname'	=> $class_data[0]['name'],
+												'date' => $date,
+												'classtime' => $classtime,
+												'teacher' => $teacher_data[$value['teacherno']],
+												'attender' => $value['attender'],
+												'scheduleno' => $value['no'],
+												'bookstatus' => $bookstatus);
+
+				$result_classname = $class_data[0]['name'];
+			}
+		}
+
+		$data['result'] = $result;
+		$data['result_classname'] = $result_classname;
+		$data['class_booked'] = ($class_booked) ? 'booked' : '';
+		$this->load->view('selectclass', $data);
 	}
 
 	public function mybooking()
 	{
-		$this->load->view('mybooking');
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'mybooking');
+
+		// 課程內容
+		$class_data = array();
+		$class_sqldata = array();
+		$class_sql = $this->db->select('*')
+							->from('class')
+							->order_by('no','asc')
+							->get();
+		$class_sqldata = $class_sql->result_array();
+		$class_sql->free_result();
+
+		foreach ($class_sqldata as $key => $value) {
+			$class_data[$value['no']] = $value;
+		}
+
+		// 預約資料
+		$book_data = array();
+		$scheduleno_check = array();
+		$scheduleno_ref = array();
+		$book_sql = $this->db->select('*')
+							->from('booking')
+							->where('memberno', $dataArr[0]['no'])
+							->get();
+		$book_data = $book_sql->result_array();
+		foreach ($book_data as $key => $value) {
+			$scheduleno_check[] = $value['scheduleno'];
+			$scheduleno_ref[$value['scheduleno']] = $value['no'];
+		}
+
+		$booking_list = array();
+		$schedule_data = array();
+		if (count($book_data) > 0) {
+			$schedule_sql = $this->db->select('*')
+								->from('schedule')
+								->where_in('no', $scheduleno_check)
+								->order_by('no','asc')
+								->get();
+			$schedule_data = $schedule_sql->result_array();
+
+			foreach ($schedule_data as $key => $value) {
+				$bookingno = $scheduleno_ref[$value['no']];
+				$date = date("Y/m/d", strtotime($value['date']));
+				$classtime = substr_replace($value['classtime'], ":", 2, 0);
+				$booking_list[$bookingno] = array(	'pic' => $class_data[$value['classno']]['pic'],
+													'classname'	=> $class_data[$value['classno']]['name'],
+													'date' => $date,
+													'classtime' => $classtime);
+			}
+		}
+
+		$data['booking_list'] = $booking_list;
+
+		$this->load->view('mybooking', $data);
 	}
 
 	public function bookingdetail()
 	{
-		$this->load->view('bookingdetail');
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'bookingdetail');
+
+		if (empty($_GET['bookingno'])) {
+			header('Location: '.base_url());
+			return;
+		}
+
+		// 預約資料
+		$book_data = array();
+		$book_sql = $this->db->select('*')
+							->from('booking')
+							->where('no',$_GET['bookingno'])
+							->where('memberno', $dataArr[0]['no'])
+							->get();
+		$book_data = $book_sql->result_array();
+
+		$schedule_data = array();
+		$schedule_sql = $this->db->select('*')
+								->from('schedule')
+								->where('no', $book_data[0]['scheduleno'])
+								->get();
+		$schedule_data = $schedule_sql->result_array();
+
+		// 教室內容
+		$classroom_data = array();
+		$classroom_sql = $this->db->select('*')
+							->from('classroom')
+							->where('no',$schedule_data[0]['classroomno'])
+							->get();
+		$classroom_data = $classroom_sql->result_array();
+
+		// 教室內容
+		$teacher_data = array();
+		$teacher_sql = $this->db->select('*')
+							->from('teacher')
+							->where('no',$schedule_data[0]['teacherno'])
+							->get();
+		$teacher_data = $teacher_sql->result_array();
+
+		// 課程內容
+		$class_data = array();
+		$class_sql = $this->db->select('*')
+							->from('class')
+							->where('no',$schedule_data[0]['classno'])
+							->get();
+		$class_data = $class_sql->result_array();
+
+		$date = date("Y/m/d", strtotime($schedule_data[0]['date']));
+		$classtime = substr_replace($schedule_data[0]['classtime'], ":", 2, 0);
+
+		$info_array = explode("\n", $class_data[0]['info']);
+		$info_html = '<ul>';
+		foreach ($info_array as $infokey => $infoitem) {
+			$info_html .= '<li>'.$infoitem.'</li>';
+		}
+		$info_html .= '</ul>';
+		
+		$detail = array('pic' => $class_data[0]['pic'],
+						'date' => $date,
+						'classname' => $class_data[0]['name'],
+						'classtime' => $classtime,
+						'classroom' => $classroom_data[0]['name'],
+						'attender' => $schedule_data[0]['attender'],
+						'teacher' => $teacher_data[0]['name'],
+						'info' => $info_html);
+		$data['detail'] = $detail;
+		$this->load->view('bookingdetail', $data);
 	}
 
 	public function generate_schedule()
@@ -179,6 +604,92 @@ class Abc extends CI_Controller {
 				}
 				
 			}
+		}
+	}
+
+	public function more()
+	{
+		$this->load->view('more');
+	}
+
+	public function collect()
+	{
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'collect');
+
+		$this->load->view('collect');
+	}
+	public function history()
+	{
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'history');
+
+		$this->load->view('history');
+	}
+	public function historydetail()
+	{
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'historydetail');
+
+		$this->load->view('historydetail');
+	}
+
+	public function login()
+	{
+		$dataArr = $this->session_info();
+		if (count($dataArr) > 0) {
+			header("Location: ".base_url());
+		}
+		$this->load->view('login');
+	}
+	public function forgetpsw()
+	{
+		$dataArr = $this->session_info();
+		if (count($dataArr) > 0) {
+			header("Location: ".base_url());
+		}
+		$this->load->view('forgetpsw');
+	}
+	public function register()
+	{
+		$dataArr = $this->session_info();
+		if (count($dataArr) > 0) {
+			header("Location: ".base_url());
+		}
+		$this->load->view('register');
+	}
+
+	public function logout()
+	{
+		$this->nativesession->delete('LOGIN_ID');
+		header('location:'.base_url());
+	}
+
+	public function policy()
+	{
+		$this->load->view('policy');
+	}
+
+	// 登入資訊
+	private function session_info()
+	{
+		$LOGIN_ID = $this->nativesession->get('LOGIN_ID');
+		if( empty($LOGIN_ID) ) {
+			$dataArr = array();
+			return $dataArr;
+		}
+		else {
+			$whereArr = array( 'no' => $LOGIN_ID );
+			$query = $this->db->get_where('member',$whereArr);
+			$dataArr = $query->result_array();
+			return $dataArr;
+		}
+	}
+
+	private function check_login($dataArr, $redirect)
+	{
+		if (count($dataArr) == 0) {
+			header("Location: ".base_url()."login?redirect=".$redirect);
 		}
 	}
 
@@ -289,55 +800,10 @@ class Abc extends CI_Controller {
 		}
 		return $teacher_ref;
 	}
-
-	public function more()
+	public function reminder()
 	{
-		$this->load->view('more');
-	}
-
-	public function collect()
-	{
-		$this->load->view('collect');
-	}
-	public function history()
-	{
-		$this->load->view('history');
-	}
-	public function historydetail()
-	{
-		$this->load->view('historydetail');
-	}
-	public function filter()
-	{
-		$this->load->view('filter');
-	}
-	public function filterteacher()
-	{
-		$this->load->view('filterteacher');
-	}
-	public function filtertime()
-	{
-		$this->load->view('filtertime');
-	}
-	public function filterseat()
-	{
-		$this->load->view('filterseat');
-	}
-	public function login()
-	{
-		$this->load->view('login');
-	}
-	public function forgetpsw()
-	{
-		$this->load->view('forgetpsw');
-	}
-	public function register()
-	{
-		$this->load->view('register');
-	}
-	public function policy()
-	{
-		$this->load->view('policy');
+		$dataArr = $this->session_info();
+		$this->load->view('reminder');
 	}
 }
 

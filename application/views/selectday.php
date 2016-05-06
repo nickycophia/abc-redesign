@@ -38,7 +38,7 @@
       <div class="header">
          <h1 class="header_name">選課系統</h1>
          <div class="header_btn">
-         <a class="back"href="course"></a>
+         <a class="back" href="course"></a>
          </div>
       </div>
    </header>
@@ -50,7 +50,7 @@
             </div>
             <div class="selectday_time">
                <span class="year">2016</span>
-               <span class="month">4</span>
+               <span class="month"><?php echo $classmonth;?></span>
             </div>
             <div class="selectday_week">
                <ul>
@@ -63,6 +63,7 @@
                   <li>週六</li>
                </ul>
             </div>
+            <?php if ($classmonth == 4) {?>
             <div class="selectday_date">
                <table>
                   <tr>
@@ -71,66 +72,128 @@
                      <td></td>
                      <td></td>
                      <td></td>
-                     <td><a class="disable" href="">1</a></td>
-                     <td><a class="disable" href="">2</a></td>
+                     <td><a class="disable" href="javascript:;">1</a></td>
+                     <td><a class="disable" href="javascript:;">2</a></td>
                   </tr>
                   <tr>
-                     <td><a class="disable" href="">3</a></td>
-                     <td><a class="choose" href="">4</a></td>
-                     <td><a class="choose" href="">5</a></td>
-                     <td><a href="">6</a></td>
-                     <td><a href="">7</a></td>
-                     <td><a href="">8</a></td>
-                     <td><a href="">9</a></td>
+                     <td><a class="disable" href="javascript:;">3</a></td>
+                     <td><a class="disable" href="javascript:;">4</a></td>
+                     <td><a class="disable" href="javascript:;">5</a></td>
+                     <td><a class="disable" href="javascript:;">6</a></td>
+                     <td><a class="disable" href="javascript:;">7</a></td>
+                     <td><a class="disable" href="javascript:;">8</a></td>
+                     <td><a class="disable" href="javascript:;">9</a></td>
                   </tr>
                   <tr>
-                     <td><a href="">10</a></td>
-                     <td><a class="choose" href="">11</a></td>
-                     <td><a href="">12</a></td>
-                     <td><a href="">13</a></td>
-                     <td><a href="">14</a></td>
-                     <td><a href="">15</a></td>
-                     <td><a href="">16</a></td>
+                     <td><a class="disable" href="javascript:;">10</a></td>
+                     <td><a class="disable" href="javascript:;">11</a></td>
+                     <td><a class="disable" href="javascript:;">12</a></td>
+                     <td><a class="disable" href="javascript:;">13</a></td>
+                     <td><a class="disable" href="javascript:;">14</a></td>
+                     <td><a class="enable today" href="javascript:;">15</a></td>
+                     <td><a class="enable" href="javascript:;">16</a></td>
                   </tr>
                   <tr>
-                     <td><a href="">17</a></td>
-                     <td><a class="choose" href="">18</a></td>
-                     <td><a href="">19</a></td>
-                     <td><a href="">20</a></td>
-                     <td><a class="choose" href="">21</a></td>
-                     <td><a class="today choose" href="">22</a></td>
-                     <td><a href="">23</a></td>
+                     <td><a class="enable" href="javascript:;">17</a></td>
+                     <td><a class="enable" href="javascript:;">18</a></td>
+                     <td><a class="enable" href="javascript:;">19</a></td>
+                     <td><a class="enable" href="javascript:;">20</a></td>
+                     <td><a class="enable" href="javascript:;">21</a></td>
+                     <td><a class="enable" href="javascript:;">22</a></td>
+                     <td><a class="enable" href="javascript:;">23</a></td>
                   </tr>
                   <tr>
-                     <td><a href="">24</a></td>
-                     <td><a href="">25</a></td>
-                     <td><a href="">26</a></td>
-                     <td><a href="">27</a></td>
-                     <td><a href="">28</a></td>
-                     <td><a href="">29</a></td>
-                     <td><a href="">30</a></td>
+                     <td><a class="enable" href="javascript:;">24</a></td>
+                     <td><a class="enable" href="javascript:;">25</a></td>
+                     <td><a class="enable" href="javascript:;">26</a></td>
+                     <td><a class="enable" href="javascript:;">27</a></td>
+                     <td><a class="enable" href="javascript:;">28</a></td>
+                     <td><a class="enable" href="javascript:;">29</a></td>
+                     <td><a class="enable" href="javascript:;">30</a></td>
                   </tr>
                </table>
             </div>
-            <div class="btn_block">
-               <a class="btn_green day_all"href="" >日期全選</a>
-               <a class="btn_gray day_reset"href="" >清除選項</a>
-               <a class="btn_sakura day_search"href="selectclass" >搜尋</a>
+            <?php } else { ?>
+            <div class="selectday_date">
+               <table>
+                  <tr>
+                     <td><a class="enable" href="javascript:;">1</a></td>
+                     <td><a class="enable" href="javascript:;">2</a></td>
+                     <td><a class="enable" href="javascript:;">3</a></td>
+                     <td><a class="enable" href="javascript:;">4</a></td>
+                     <td><a class="enable" href="javascript:;">5</a></td>
+                     <td><a class="enable" href="javascript:;">6</a></td>
+                     <td><a class="enable" href="javascript:;">7</a></td>
+                  </tr>
+                  <tr>
+                     <td><a class="enable" href="javascript:;">8</a></td>
+                     <td><a class="enable" href="javascript:;">9</a></td>
+                     <td><a class="enable" href="javascript:;">10</a></td>
+                     <td><a class="enable" href="javascript:;">11</a></td>
+                     <td><a class="enable" href="javascript:;">12</a></td>
+                     <td><a class="enable" href="javascript:;">13</a></td>
+                     <td><a class="enable" href="javascript:;">14</a></td>
+                  </tr>
+                  <tr>
+                     <td><a class="enable" href="javascript:;">15</a></td>
+                     <td><a class="disable" href="javascript:;">16</a></td>
+                     <td><a class="disable" href="javascript:;">17</a></td>
+                     <td><a class="disable" href="javascript:;">18</a></td>
+                     <td><a class="disable" href="javascript:;">19</a></td>
+                     <td><a class="disable" href="javascript:;">20</a></td>
+                     <td><a class="disable" href="javascript:;">21</a></td>
+                  </tr>
+                  <tr>
+                     <td><a class="disable" href="javascript:;">22</a></td>
+                     <td><a class="disable" href="javascript:;">23</a></td>
+                     <td><a class="disable" href="javascript:;">24</a></td>
+                     <td><a class="disable" href="javascript:;">25</a></td>
+                     <td><a class="disable" href="javascript:;">26</a></td>
+                     <td><a class="disable" href="javascript:;">27</a></td>
+                     <td><a class="disable" href="javascript:;">28</a></td>
+                  </tr>
+                  <tr>
+                     <td><a class="disable" href="javascript:;">29</a></td>
+                     <td><a class="disable" href="javascript:;">30</a></td>
+                     <td><a class="disable" href="javascript:;">31</a></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                  </tr>
+               </table>
             </div>
+            <?php } ?>
+            <form action="selectclass" method="get">
+               <div class="btn_block">
+                  <a class="btn_green day_all" id="select_all_available" href="javascript:;" >不限定日期</a>
+                  <a class="btn_gray day_reset" id="clear_select" href="javascript:;" >清除日期</a>
+                  <a id="nextstep" class="btn_sakura day_search" href="javascript:;">下一步</a>
+                  <input id="selected_day" name="selected_day" type="hidden" value="">
+                  <input id="selected_month" name="selected_month" type="hidden" value="<?php echo $classmonth;?>">
+                  <input id="selected_class" name="selected_class" type="hidden" value="<?php echo $_GET['selected_class'];?>">
+                  <input id="selected_classroom" name="selected_classroom" type="hidden" value="<?php echo $_GET['selected_classroom'];?>">
+                  
+                  <input id="selected_teacher" name="selected_teacher" type="hidden" value="">
+                  <input id="selected_time" name="selected_time" type="hidden" value="">
+                  <input id="selected_seat" name="selected_seat" type="hidden" value="">
+               </div>
+            </form>
          </div>
       </div>
    </main>
    <footer class="footer">
       <div class="btn_block filter">
-         <a class="btn_filter filtered" href="filter" >更多篩選設定</a>
+         <a id="select_filter" class="btn_filter" href="javascript:;" >更多篩選設定</a>
       </div>
    </footer>
-   <div class="filter_area to_filter">
+   
+   <div class="filter_area to_filter" style="display: none;">
       <header>
          <div class="header">
             <h1 class="header_name">更多篩選設定</h1>
             <div class="header_btn">
-               <a class="back"href="selectday"></a>
+               <a id="close_to_filter" class="back" href="javascript:;"></a>
             </div>
          </div>
       </header>
@@ -139,16 +202,16 @@
             <div class="filter_setting">
                <div class="filter_topic">篩選工具幫您更快找到適合項目</div>
                <div class="filter_cell go_filter">
-                  <a href="filterteacher" class="teacher">
+                  <a id="open_to_filterteacher" href="javascript:;" class="teacher">
                      選擇老師
                      <span>不指定</span>
                   </a>
-                  <a href="filtertime" class="time">
+                  <a id="open_to_filtertime" href="javascript:;" class="time">
                      選擇上課時段
-                     <span>10:00,13:00</span>
+                     <span>不指定</span>
                   </a>
-                  <a href="filterseat" class="seat">
-                     選擇座位數
+                  <a id="open_to_filterseat" href="javascript:;" class="seat">
+                     選擇剩餘座位數
                      <span>不指定</span>
                   </a>
                </div>
@@ -157,16 +220,17 @@
       </main>
       <footer class="footer">
          <div class="btn_block filter">
-            <a class="btn_filter remove" href="" >清除篩選設定</a>
+            <a class="btn_filter remove" href="javascript:;" >清除篩選設定</a>
          </div>
       </footer>
    </div>
-   <div class="filter_area to_filterteacher">
+   
+   <div class="filter_area to_filterteacher" style="display: none;">
       <header>
          <div class="header">
             <h1 class="header_name">選擇老師</h1>
             <div class="header_btn">
-               <a class="back"href="filter"></a>
+               <a id="close_to_filterteacher" class="back" href="javascript:;"></a>
             </div>
          </div>
       </header>
@@ -174,13 +238,12 @@
          <div class="main_content">
             <div class="filter_setting">
                <div class="filter_cell">
-                  <a href="" class="no_assign active">不指定</a>
+                  <a id="no_assign_teacher" href="javascript:;" class="no_assign active">不指定</a>
                </div>
-               <div class="filter_cell">
-                  <a href="" class="teacher">林小美</a>
-                  <a href="" class="teacher">張香香</a>
-                  <a href="" class="teacher">王小華</a>
-                  <a href="" class="teacher">蔡嘉惠</a>
+               <div id="teacher_filter_area" class="filter_cell">
+                  <?php foreach($classteacher as $key => $value): ?>
+                  <a href="javascript:;" class="teacher" data-teacherno="<?php echo $key;?>"><?php echo $value;?></a>
+                  <?php endforeach; ?>
                </div>
             </div>
          </div>
@@ -188,12 +251,13 @@
       <footer class="footer">
       </footer>
    </div>
-   <div class="filter_area to_filtertime">
+   
+   <div class="filter_area to_filtertime" style="display: none;">
       <header>
          <div class="header">
             <h1 class="header_name">選擇時間</h1>
             <div class="header_btn">
-               <a class="back"href="filter"></a>
+               <a id="close_to_filtertime" class="back"href="javascript:;"></a>
             </div>
          </div>
       </header>
@@ -201,13 +265,13 @@
          <div class="main_content">
             <div class="filter_setting">
                <div class="filter_cell">
-                  <a href="" class="no_assign">不指定</a>
+                  <a id="no_assign_time" href="javascript:;" class="no_assign active">不指定</a>
                </div>
-               <div class="filter_cell">
-                  <a href="" class="time active">10:00</a>
-                  <a href="" class="time active">13:00</a>
-                  <a href="" class="time">16:00</a>
-                  <a href="" class="time">19:00</a>
+               <div id="time_filter_area" class="filter_cell">
+                  <a href="javascript:;" class="time" data-time="1000">10:00</a>
+                  <a href="javascript:;" class="time" data-time="1300">13:00</a>
+                  <a href="javascript:;" class="time" data-time="1600">16:00</a>
+                  <a href="javascript:;" class="time" data-time="1900">19:00</a>
                </div>
             </div>
          </div>
@@ -215,12 +279,13 @@
       <footer class="footer">
       </footer>
    </div>
-   <div class="filter_area to_filterseat">
+   
+   <div class="filter_area to_filterseat" style="display: none;">
       <header>
          <div class="header">
             <h1 class="header_name">選擇剩餘座位數</h1>
             <div class="header_btn">
-               <a class="back"href="filter"></a>
+               <a id="close_to_filterseat" class="back" href="javascript:;"></a>
             </div>
          </div>
       </header>
@@ -228,13 +293,13 @@
          <div class="main_content">
             <div class="filter_setting">
                <div class="filter_cell">
-                  <a href="" class="no_assign">不指定</a>
+                  <a id="no_assign_seat" href="javascript:;" class="no_assign active">不指定</a>
                </div>
-               <div class="filter_cell">
-                  <a href="" class="seat active">4</a>
-                  <a href="" class="seat">3</a>
-                  <a href="" class="seat">2</a>
-                  <a href="" class="seat">1</a>
+               <div id="seat_filter_area" class="filter_cell">
+                  <a href="javascript:;" class="seat" data-seat="0">4</a>
+                  <a href="javascript:;" class="seat" data-seat="1">3</a>
+                  <a href="javascript:;" class="seat" data-seat="2">2</a>
+                  <a href="javascript:;" class="seat" data-seat="3">1</a>
                </div>
             </div>
          </div>

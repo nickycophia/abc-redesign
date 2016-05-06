@@ -23,15 +23,15 @@
    <![endif]-->
 </head>
 <body>
-   <div id="lightbox_area" class="lightbox_area" style="display:none;">
+   <div id="lightbox_area" class="lightbox_area" style="display: none;">
       <div class="lightbox selectclass">
          <div class="lightbox_topic">
             <div class="lightbox_name">預約成功</div>
             <div class="lightbox_txt">您可以重新選課或<br>前往日程表查看課程</div>
          </div>
          <div class="lightbox_btn action2">
-            <a class="continue" href="course.html" >重新選課</a>
-            <a class="ok" href="" >確定</a>
+            <a class="continue" href="course" >重新選課</a>
+            <a class="ok" href="mybooking" >查看日程表</a>
          </div>
       </div>
    </div>   
@@ -39,127 +39,64 @@
       <div class="header">
          <h1 class="header_name">選課系統</h1>
          <div class="header_btn">
-         <a class="back"href="selectday.html"></a>
+         <a class="back" href="selectday?selected_class=<?php echo $_GET['selected_class'];?>&selected_classroom=<?php echo $_GET['selected_classroom'];?>"></a>
          </div>
       </div>
    </header>
    <main class="main no_sub-nav">
       <div class="main_content">
 
-         <div class="selectclass_null" style="display:block;"><!-- null -->
-            <div class="null_txt">
-               <p>很抱歉，滿足設定條件的課程不存在，<br>請更改設定條件後再搜尋。</p>
-            </div>
-            <div class="btn_block reset">
-               <a class="btn_green" href="course.html">更改教室</a>
-               <a class="btn_orange " href="selectday.html">更改日期</a>
-            </div>
-         </div> 
-            
-         <div class="selectclass_result list_area booked">
-            <div class="selectclass_topic">日本媽媽家常菜 南港教室</div>
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
+         <?php if (count($result) > 0): ?>
+            <div class="selectclass_result list_area <?php echo $class_booked;?>">
+               <div class="selectclass_topic"><?php echo $result_classname;?></div>
+               <?php foreach ($result as $key => $value): ?>
+               
+               <div class="list_row"><!-- row -->
+                  <div class="list_pic">
+                     <img src="assets/img/<?php echo $value['pic'];?>" alt="">
                   </div>
-                  <div class="list_teacher">王小美</div>
-                  <div class="list_student">2</div>
-               </div>
-               <div class="btn_block">
-                  <a class="btn_orange booking active"href="" >預約</a>
-               </div>
-            </div>
-            
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
+                  <div class="list_topic">
+                     <h4 class="list_title"><?php echo $value['classname'];?></h4>
+                     <div class="list_date">
+                        <span class="year"><?php echo $value['date'];?></span>
+                        <span class="time"><?php echo $value['classtime'];?></span>
+                     </div>
+                     <div class="list_teacher"><?php echo $value['teacher'];?></div>
+                     <div class="list_student"><?php echo $value['attender'];?></div>
                   </div>
-                  <div class="list_teacher">王小美</div>
-                  <div class="list_student">2</div>
+                  <div class="btn_block">
+                     <?php if ($value['bookstatus'] == 'booked') { ?>
+                        <a class="btn_orange booking active" href="javascript:;">預約</a>
+                     <?php } else { ?>
+                        <a class="btn_orange booking" href="javascript:;" data-scheduleno="<?php echo $value['scheduleno'];?>">預約</a>
+                     <?php } ?>
+                  </div>
                </div>
-               <div class="btn_block">
-                  <a class="btn_orange booking"href="" >預約</a>
-               </div>
-            </div>
 
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
-                  </div>
-                  <div class="list_teacher">王小美</div>
-                  <div class="list_student">2</div>
-               </div>
-               <div class="btn_block">
-                  <a class="btn_orange booking"href="" >預約</a>
-               </div>
+               <?php endforeach; ?>
             </div>
+         <?php endif;?>
 
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
+         <?php if (count($result) == 0): ?>
+            <div class="selectclass_null" style="display:block;">
+               <div class="null_txt">
+                  <p>很抱歉，滿足設定條件的課程不存在，<br>請更改設定條件後再搜尋。</p>
                </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
-                  </div>
-                  <div class="list_teacher">王小美</div>
-                  <div class="list_student">2</div>
-               </div>
-               <div class="btn_block">
-                  <a class="btn_orange booking"href="" >預約</a>
+               <div class="btn_block reset">
+                  <a class="btn_green" href="course">更改教室</a>
+                  <a class="btn_orange " href="selectday?selected_class=<?php echo $_GET['selected_class'];?>&selected_classroom=<?php echo $_GET['selected_classroom'];?>">更改日期</a>
                </div>
             </div>
+         <?php endif;?>
 
-            <div class="list_row"><!-- row -->
-               <div class="list_pic">
-                  <img src="assets/img/f4_1.jpg" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">日本媽媽家常菜</h4>
-                  <div class="list_date">
-                     <span class="year">2016/4/20</span>
-                     <span class="time">18:00</span>
-                  </div>
-                  <div class="list_teacher">王小美</div>
-                  <div class="list_student">2</div>
-               </div>
-               <div class="btn_block">
-                  <a class="btn_orange booking"href="" >預約</a>
-               </div>
-            </div>
-         </div>
       </div>
    </main>
    <footer class="footer">
-      <nav class="main_nav">
-         <ul>
-            <li><a class="news" href="news.html">首頁</a></li>
-            <li><a class="collect" href="collect.html">收藏</a></li>
-            <li><a class="course active" href="course.html">選課</a></li>
-            <li><a class="booking" href="booking.html">日程表</a></li>
-            <li><a class="more" href="more.html">更多</a></li>
-         </ul>
-      </nav>
+      <div class="btn_block filter">
+         <a id="select_filter" class="btn_filter" href="javascript:;" >更多篩選設定</a>
+      </div>
    </footer>
+<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="assets/js/selectclass.js"></script>
 </body>
 </html>

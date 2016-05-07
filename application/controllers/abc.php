@@ -23,6 +23,150 @@ class Abc extends CI_Controller {
 		$this->load->view('news');
 	}
 
+	public function theme()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('theme');
+	}
+
+	public function theme1()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('theme1');
+	}
+
+	public function theme2()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('theme2');
+	}
+
+	public function news1()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('news1');
+	}
+
+	public function news2()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('news2');
+	}
+
+	public function news3()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('news3');
+	}
+
+	public function oneday()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('oneday');
+	}
+
+	public function oneday1()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('oneday1');
+	}
+
+	public function oneday2()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('oneday2');
+	}
+
+	public function oneday3()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('oneday3');
+	}
+
+	public function oneday4()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('oneday4');
+	}
+
+	public function studio()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('studio');
+	}
+
+	public function studio1()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('studio1');
+	}
+
+		public function studio2()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('studio2');
+	}
+
+		public function studio3()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('studio3');
+	}	
+
+	public function abcclass()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcclass');
+	}
+
+	public function abcclass1()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcclass1');
+	}
+
+	public function abcclass2()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcclass2');
+	}
+
+	public function abcclass_dessert()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcclass_dessert');
+	}
+
+	public function abcclass_bread()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcclass_bread');
+	}
+
+	public function abcabout()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcabout');
+	}
+
+	public function abcprice()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcprice');
+	}
+
+	public function abcprice_bread()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcprice_bread');
+	}
+
+	public function abcprice_dessert()
+	{
+		$dataArr = $this->session_info();
+		$this->load->view('abcprice_dessert');
+	}
+
 	public function newsdetail()
 	{
 		$dataArr = $this->session_info();
@@ -657,6 +801,3 @@ class Abc extends CI_Controller {
 		return $teacher_ref;
 	}
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

@@ -40,6 +40,31 @@
 
 $route['default_controller'] = "abc/index";
 $route['newsdetail'] = "abc/newsdetail";
+$route['theme'] = "abc/theme";
+$route['theme1'] = "abc/theme1";
+$route['theme2'] = "abc/theme2";
+$route['news1'] = "abc/news1";
+$route['news2'] = "abc/news2";
+$route['news3'] = "abc/news3";
+$route['oneday'] = "abc/oneday";
+$route['oneday1'] = "abc/oneday1";
+$route['oneday2'] = "abc/oneday2";
+$route['oneday3'] = "abc/oneday3";
+$route['oneday4'] = "abc/oneday4";
+$route['studio'] = "abc/studio";
+$route['studio1'] = "abc/studio1";
+$route['studio2'] = "abc/studio2";
+$route['studio3'] = "abc/studio3";
+
+$route['abcclass'] = "abc/abcclass";
+$route['abcclass1'] = "abc/abcclass1";
+$route['abcclass2'] = "abc/abcclass2";
+$route['abcclass_dessert'] = "abc/abcclass_dessert";
+$route['abcclass_bread'] = "abc/abcclass_bread";
+$route['abcabout'] = "abc/abcabout";
+$route['abcprice'] = "abc/abcprice";
+$route['abcprice_bread'] = "abc/abcprice_bread";
+$route['abcprice_dessert'] = "abc/abcprice_dessert";
 
 $route['course'] = "abc/course";
 $route['selectday'] = "abc/selectday";
@@ -79,4 +104,3 @@ $route['404_override'] = '';
 $route['generate_schedule'] = 'abc/generate_schedule';
 
 /* End of file routes.php */
-/* Location: ./application/config/routes.php */

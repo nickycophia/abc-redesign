@@ -27,7 +27,11 @@
       <div class="header">
          <h1 class="header_name">最新消息</h1>
          <div class="header_btn">
-            <a class="sub_btn" href="oneday">預約體驗</a>
+            <?php if ($cardno == "") { ?>
+               <a class="sub_btn" href="oneday1">預約體驗</a>
+            <?php } else { ?>
+               <a class="sub_btn" href="oneday">預約體驗</a>
+            <?php } ?>
          </div>
       </div>
    </header>
@@ -40,37 +44,23 @@
             </ul>
          </nav>
          <div class="official_news list_area">
-            <div class="list_row"><!-- row -->
-               <a class="link" href="theme1"></a><!-- link -->
-               <div class="list_pic">
-                  <img src="assets/img/theme1.png" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">為了迎接春天到來，準備粉粉嫩嫩的櫻花點心，一起去賞花吧！</h4>
-                  <div class="list_date">
-                     <span class="year">2016</span>
-                     <span class="month">3</span>
-                     <span class="day">20</span>
+            <?php foreach ($newsdata as $key => $value) { ?>
+               <div class="list_row"><!-- row -->
+                  <a class="link" href="<?php echo $value['content']?>"></a><!-- link -->
+                  <div class="list_pic">
+                     <img src="assets/img/<?php echo $value['content']?>.png" alt="">
                   </div>
-               </div>
-               <a href="" class="collection active"></a><!-- collection -->
-            </div>
-
-            <div class="list_row"><!-- row -->
-               <a class="link" href="theme2"></a><!-- link -->
-               <div class="list_pic">
-                  <img src="assets/img/theme2.png" alt="">
-               </div>
-               <div class="list_topic">
-                  <h4 class="list_title">對抗風邪 感冒保健專題及食譜</h4>
-                  <div class="list_date">
-                     <span class="year">2016</span>
-                     <span class="month">3</span>
-                     <span class="day">20</span>
+                  <div class="list_topic">
+                     <h4 class="list_title"><?php echo $value['title']?></h4>
+                     <div class="list_date">
+                        <span class="year"><?php echo substr($value['updatetime'], 0, 4);?></span>
+                        <span class="month"><?php echo substr($value['updatetime'], 4, 2);?></span>
+                        <span class="day"><?php echo substr($value['updatetime'], 6, 2);?></span>
+                     </div>
                   </div>
+                  <a href="javascript:;" id="collection_<?php echo $key?>" class="collection <?php echo $value['is_collect'];?>" data-newsno="<?php echo $key?>"></a><!-- collection -->
                </div>
-               <a href="" class="collection"></a><!-- collection -->
-            </div>
+            <?php } ?>
          </div>
       </div>
    </main>
@@ -85,5 +75,7 @@
          </ul>
       </nav>
    </footer>
+<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="assets/js/theme.js"></script>
 </body>
 </html>

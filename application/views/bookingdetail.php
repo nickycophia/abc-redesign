@@ -28,6 +28,7 @@
          <h1 class="header_name"><?php echo $detail['classname'];?></h1>
          <div class="header_btn">
          <a class="back"href="mybooking"></a>
+         <a href="reminder?bookingno=<?php echo $_GET['bookingno'];?>" class="sub_btn">提醒我</a>
          </div>
       </div>
    </header>

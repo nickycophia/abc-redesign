@@ -27,7 +27,7 @@
       <div class="header">
          <h1 class="header_name">預約體驗</h1>
          <div class="header_btn">
-            <a class="close" href="index.php"></a>
+            <a class="close" href="javascript:;" onclick="history.go(-1);"></a>
          </div>
       </div>
    </header>

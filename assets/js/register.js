@@ -6,6 +6,22 @@ $(document).ready(function(){
    $('.lightbox_area .ok').click(function(event) {
       $('.lightbox_area').hide();
    });
+
+   $('#policy').click(function(event) {
+      $('.policy_area').show();
+      $('.form_area').hide();
+      
+      $('.registerhead').hide();
+      $('.policyhead').show();
+   });
+
+   $('#close_policy').click(function(event) {
+      $('.policy_area').hide();
+      $('.form_area').show();
+
+      $('.registerhead').show();
+      $('.policyhead').hide();
+   });
 });
 
 // 登入

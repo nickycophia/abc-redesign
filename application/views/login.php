@@ -38,7 +38,7 @@
       <div class="header">
          <h1 class="header_name">登入</h1>
          <div class="header_btn">
-            <a class="close" href=""></a>
+            <a class="close" href="javascript:;" onclick="history.go(-1);"></a>
          </div>
       </div>
    </header>

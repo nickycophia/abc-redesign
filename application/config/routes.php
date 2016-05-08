@@ -78,6 +78,7 @@ $route['mybooking'] = "abc/mybooking";
 $route['bookingdetail'] = "abc/bookingdetail";
 $route['history'] = "abc/history";
 $route['historydetail'] = "abc/historydetail";
+$route['reminder'] = "abc/reminder";
 
 $route['register'] = "abc/register";
 $route['login'] = "abc/login";
@@ -92,11 +93,15 @@ $route['more'] = "abc/more";
 $route['collect'] = "abc/collect";
 $route['logout'] = "abc/logout";
 
+$route['abcajax/newscollect'] = 'abcajax/newscollect';
+
 $route['abcajax/login'] = 'abcajax/login';
 $route['abcajax/register'] = 'abcajax/register';
 
 $route['abcajax/booking'] = 'abcajax/booking';
 $route['abcajax/cancelbooking'] = 'abcajax/cancelbooking';
+$route['abcajax/addreminder'] = 'abcajax/addreminder';
+$route['abcajax/resetmail'] = 'abcajax/resetmail';
 
 $route['404_override'] = '';
 

@@ -20,25 +20,113 @@ class Abc extends CI_Controller {
 	public function index()
 	{
 		$dataArr = $this->session_info();
-		$this->load->view('news');
+
+		// 會員
+		$cardno = "";
+		if (count($dataArr) > 0) {
+			$cardno = $dataArr[0]['cardno'];
+		}
+		$data['cardno'] = $cardno;
+		$this->load->view('news',$data);
 	}
 
 	public function theme()
 	{
 		$dataArr = $this->session_info();
-		$this->load->view('theme');
+		
+		// 會員
+		$cardno = "";
+		if (count($dataArr) > 0) {
+			$cardno = $dataArr[0]['cardno'];
+		}
+		$data['cardno'] = $cardno;
+
+		$news_data = array();
+		$news_sqldata = array();
+		$my_collect_news = array();
+		$my_collect_sqldata = array();
+		
+		$this->db->select('*');
+		$this->db->from('collectnews');
+		if (count($dataArr) > 0) {
+			$this->db->where('memberno', $dataArr[0]['no']);
+		}
+		$this->db->order_by('updatetime','desc');
+		$my_collect_sql = $this->db->get();
+		$my_collect_sqldata = $my_collect_sql->result_array();
+		$my_collect_sql->free_result();
+
+		if (count($my_collect_sqldata) > 0 && count($dataArr) > 0) {
+			foreach ($my_collect_sqldata as $key => $value) {
+				$my_collect_news[] = $value['newsno'];
+			}
+		}
+
+		$news_sql = $this->db->select('*')
+							->from('news')
+							->order_by('updatetime','desc')
+							->get();
+		$news_sqldata = $news_sql->result_array();
+		$news_sql->free_result();
+
+		foreach ($news_sqldata as $key => $value) {
+			if (in_array($value['no'], $my_collect_news) == true) {
+				$value['is_collect'] = "active";
+			} else {
+				$value['is_collect'] = "";
+			}
+			$news_data[$value['no']] = $value;
+		}
+
+		$data['newsdata'] = $news_data;
+		$this->load->view('theme',$data);
 	}
 
 	public function theme1()
 	{
 		$dataArr = $this->session_info();
-		$this->load->view('theme1');
+		
+		$is_collect = "";
+		
+		if (count($dataArr) > 0) {
+			$this->db->select('*');
+			$this->db->from('collectnews');
+			$this->db->where('memberno', $dataArr[0]['no']);
+			$this->db->where('newsno', 1);
+			$this->db->order_by('updatetime','desc');
+			$my_collect_sql = $this->db->get();
+			$my_collect_sqldata = $my_collect_sql->result_array();
+
+			if (count($my_collect_sqldata) > 0 ) {
+				$is_collect = "active";
+			}
+		}
+
+		$data['is_collect'] = $is_collect;
+		$this->load->view('theme1',$data);
 	}
 
 	public function theme2()
 	{
 		$dataArr = $this->session_info();
-		$this->load->view('theme2');
+		$is_collect = "";
+		
+		if (count($dataArr) > 0) {
+			$this->db->select('*');
+			$this->db->from('collectnews');
+			$this->db->where('memberno', $dataArr[0]['no']);
+			$this->db->where('newsno', 2);
+			$this->db->order_by('updatetime','desc');
+			$my_collect_sql = $this->db->get();
+			$my_collect_sqldata = $my_collect_sql->result_array();
+
+			if (count($my_collect_sqldata) > 0 ) {
+				$is_collect = "active";
+			}
+		}
+
+		$data['is_collect'] = $is_collect;
+		$this->load->view('theme2',$data);
 	}
 
 	public function news1()
@@ -411,6 +499,8 @@ class Abc extends CI_Controller {
 		foreach ($book_data as $key => $value) {
 			$scheduleno_check[] = $value['scheduleno'];
 			$scheduleno_ref[$value['scheduleno']] = $value['no'];
+
+			$reminder[$value['no']] = ($value['reminder'] == "") ? "" : "reminder";
 		}
 
 		$booking_list = array();
@@ -430,7 +520,8 @@ class Abc extends CI_Controller {
 				$booking_list[$bookingno] = array(	'pic' => $class_data[$value['classno']]['pic'],
 													'classname'	=> $class_data[$value['classno']]['name'],
 													'date' => $date,
-													'classtime' => $classtime);
+													'classtime' => $classtime,
+													'reminder' => $reminder[$bookingno]);
 			}
 		}
 
@@ -509,6 +600,44 @@ class Abc extends CI_Controller {
 						'info' => $info_html);
 		$data['detail'] = $detail;
 		$this->load->view('bookingdetail', $data);
+	}
+
+	public function reminder()
+	{
+		$reminder_dic = array( "1" => "1小時前",
+				               "2" => "3小時前",
+				               "3" => "6小時前",
+				               "4" => "9小時前",
+				               "5" => "1天前",
+				               "6" => "3天前",
+				               "7" => "5天前",
+				               "8" => "7天前");
+
+		$dataArr = $this->session_info();
+		$this->check_login($dataArr,'bookingdetail');
+
+		if (empty($_GET['bookingno'])) {
+			header('Location: '.base_url());
+			return;
+		}
+
+		$reminder = '';
+
+		// 預約資料
+		$book_data = array();
+		$book_sql = $this->db->select('*')
+							->from('booking')
+							->where('no',$_GET['bookingno'])
+							->where('memberno', $dataArr[0]['no'])
+							->get();
+		$book_data = $book_sql->result_array();
+		if ($book_data[0]['reminder'] != '') {
+			$reminder = $reminder_dic[$book_data[0]['reminder']];
+		}
+
+		$data['reminder'] = $reminder;
+		$data['reminder_dic'] = $reminder_dic;
+		$this->load->view('reminder',$data);
 	}
 
 	public function generate_schedule()
@@ -609,7 +738,18 @@ class Abc extends CI_Controller {
 
 	public function more()
 	{
-		$this->load->view('more');
+		$dataArr = $this->session_info();
+		$nickname = "";
+		$cardno = "";
+
+		if (count($dataArr) > 0) {
+			$nickname = $dataArr[0]['nickname'];
+			$cardno = $dataArr[0]['cardno'];
+		}
+
+		$data['nickname'] = $nickname;
+		$data['cardno'] = $cardno;
+		$this->load->view('more',$data);
 	}
 
 	public function collect()
@@ -617,7 +757,41 @@ class Abc extends CI_Controller {
 		$dataArr = $this->session_info();
 		$this->check_login($dataArr,'collect');
 
-		$this->load->view('collect');
+		$news_data = array();
+		$news_sqldata = array();
+		$my_collect_news = array();
+		$my_collect_sqldata = array();
+		
+		$this->db->select('*');
+		$this->db->from('collectnews');
+		$this->db->where('memberno', $dataArr[0]['no']);
+		$this->db->order_by('updatetime','desc');
+		$my_collect_sql = $this->db->get();
+		$my_collect_sqldata = $my_collect_sql->result_array();
+		$my_collect_sql->free_result();
+
+		if (count($my_collect_sqldata) > 0 ) {
+			foreach ($my_collect_sqldata as $key => $value) {
+				$my_collect_news[] = $value['newsno'];
+			}
+		}
+		if (count($my_collect_news) > 0) {
+			$this->db->select('*');
+			$this->db->from('news');
+			$this->db->where_in('no', $my_collect_news);
+			$this->db->order_by('updatetime','desc');
+			$news_sql = $this->db->get();
+			$news_sqldata = $news_sql->result_array();
+			$news_sql->free_result();
+
+			foreach ($news_sqldata as $key => $value) {
+				$news_data[$value['no']] = $value;
+			}
+		}
+
+		$data['newsdata'] = $news_data;
+
+		$this->load->view('collect',$data);
 	}
 	public function history()
 	{

@@ -72,6 +72,44 @@ class Abcajax extends CI_Controller {
 		echo 'success';
 	}
 
+	// 收藏新聞
+	public function newscollect()
+	{
+		$dataArr = $this->session_info();
+		if (count($dataArr) == 0) {
+			echo "notlogin";
+			exit;
+		}
+
+		if (empty($_POST['newsno'])) {
+			echo "fail";
+		}
+
+		$return_msg = "";
+
+		// 收藏資料
+		$collect_check = array();
+		$collect_sql = $this->db->select('*')
+							->from('collectnews')
+							->where('memberno', $dataArr[0]['no'])
+							->where('newsno', $_POST['newsno'])
+							->get();
+		$collect_check = $collect_sql->result_array();
+		if (count($collect_check) == 0) {
+			$insertdata = array('memberno' => $dataArr[0]['no'],
+								'newsno' => $_POST['newsno'],
+								'updatetime' => date("YmdHis")
+								);
+			$this->db->insert('collectnews', $insertdata);
+			$return_msg = "add";
+		} else {
+			$this->db->delete('collectnews', array('newsno' => $_POST['newsno'], 'memberno' => $dataArr[0]['no']));
+			$return_msg = "delete";
+		}
+
+		echo $return_msg;
+	}
+
 	// 登入
 	public function login(){
 		$password_coded = md5($_POST['password']);
@@ -125,6 +163,28 @@ class Abcajax extends CI_Controller {
 		if ($id) {
 			$this->nativesession->set('LOGIN_ID',$id);
 			echo json_encode(array("status" => "success"));
+		}
+	}
+
+	public function addreminder()
+	{
+		$data = array('reminder' => $_POST['reminder']);
+		$this->db->where('no', $_POST['bookingno']);
+		$this->db->update('booking', $data);
+		echo 'success';
+	}
+
+	public function resetmail()
+	{
+		$mailsql = $this->db->select('*')
+							->from('member')
+							->where('email', $_POST['mail'])
+							->get();
+		$mail = $mailsql->result_array();
+		if (count($mail) > 0) {
+			echo 'success';
+		} else {
+			echo 'nomail';
 		}
 	}
 
@@ -194,5 +254,4 @@ class Abcajax extends CI_Controller {
 			return $dataArr;
 		}
 	}
-
 }

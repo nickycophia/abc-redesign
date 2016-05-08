@@ -31,9 +31,32 @@
          </div>
       </div>
    </header>
-   <main class="main">
+   <main class="main no_sub-nav">
       <div class="main_content">
-         
+         <div class="filter_setting">
+            <div class="article_title juinor">會員頁面</div>
+            <div class="filter_cell go_filter">
+               <?php if ($cardno == "") {?>
+               <a class="member" href="login">登入</a>
+               <?php } else { ?>
+               <a href=""><?php echo $nickname;?></a>
+               <?php } ?>
+            </div>
+            <div class="article_title senior">關於ABC Cooking Studio</div>
+            <div class="filter_cell go_filter">
+               <a href="abcabout">產品特色</a>
+               <a href="abcprice">課程價目</a>
+               <a href="abcclass">課程介紹</a>
+               <a href="studio">教室介紹</a>
+               <a href="https://www.facebook.com/ABC-Cooking-Studio-Taiwan-268307590016516/timeline">官方Facebook</a>
+            </div>
+            <div class="article_title senior"></div>
+            <?php if ($cardno != "") {?>
+            <div class="filter_cell go_filter">
+               <a class="member" href="logout">登出</a>
+            </div>
+            <?php } ?>
+         </div>
       </div>
    </main>
    <footer class="footer">

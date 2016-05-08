@@ -27,7 +27,7 @@
       <div class="header">
          <h1 class="header_name">主題料理</h1>
          <div class="header_btn">
-            <a class="back" href="theme"></a>
+            <a class="close" href="javascript:;" onclick="history.go(-1);"></a>
          </div>
       </div>
    </header>
@@ -232,8 +232,10 @@
    </main>
    <footer class="footer">
       <div class="btn_block filter">
-         <a class="btn_filter collect" href="studio">收藏</a>
+         <a id="collection_2" class="btn_filter collect <?php echo $is_collect;?>" href="javascript:;" data-newsno="2">收藏</a>
       </div>
    </footer>
+<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="assets/js/theme.js"></script>
 </body>
 </html>

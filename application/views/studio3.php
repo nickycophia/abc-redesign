@@ -27,7 +27,7 @@
       <div class="header">
          <h1 class="header_name">環球板橋教室</h1>
          <div class="header_btn">
-            <a class="close" href="studio"></a>
+            <a class="close" href="javascript:;" onclick="history.go(-1);"></a>
          </div>
       </div>
    </header>

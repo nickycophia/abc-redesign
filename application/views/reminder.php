@@ -25,29 +25,37 @@
    <![endif]-->
 </head>
 <body>
-   
-   
+   <div class="lightbox_area" style="display: none;">
+      <div class="lightbox">
+         <div class="lightbox_topic studio">
+            <div class="lightbox_name">設定完成</div>
+         </div>
+         <div class="lightbox_btn">
+            <a class="ok" href="">確定</a>
+         </div>
+      </div>
+   </div>
+
    <header>
       <div class="header">
          <h1 class="header_name">提醒我</h1>
          <div class="header_btn">
-            <a class="back" href="bookingdetail"></a>
+            <a class="close" href="javascript:;" onclick="history.go(-1);"></a>
          </div>
       </div>
    </header>
    <main class="main no_sub-nav">
       <div class="main_content">
          <div class="studio_selection reminder_selection">
-            <select class="bd4" name="" id="reminder_selection">
-               <option value="0">設定提醒時間</option>
-               <option value="1">1小時前</option>
-               <option value="2">3小時前</option>
-               <option value="3">6小時前</option>
-               <option value="3">9小時前</option>
-               <option value="1">1天前</option>
-               <option value="2">3天前</option>
-               <option value="3">5天前</option>
-               <option value="3">7天前</option>
+            <select class="bd4" name="reminder_selection" id="reminder_selection">
+               <option value="">設定提醒時間</option>
+               <?php foreach ($reminder_dic as $key => $value) {
+                  if ($reminder == $key) { ?>
+                     <option value="<?php echo $key;?>" selected="selected"><?php echo $value;?></option>
+                  <?php } else { ?>
+                     <option value="<?php echo $key;?>"><?php echo $value;?></option>
+                  <?php } ?>
+               <?php } ?>
             </select>
          </div>
          <form action="selectday" method="get">
@@ -68,9 +76,8 @@
          </ul>
       </nav>
    </footer>
-
+<input type="hidden" name="reminder_bookingno" id="reminder_bookingno" value="<?php echo $_GET['bookingno'];?>">
 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="assets/js/coverflow.js"></script> 
-<script type="text/javascript" src="assets/js/course.js"></script> 
+<script type="text/javascript" src="assets/js/reminder.js"></script> 
 </body>
 </html>

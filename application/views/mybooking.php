@@ -78,7 +78,7 @@
                         <img src="assets/img/<?php echo $value['pic'];?>" alt="">
                      </div>
                      <div class="list_topic">
-                        <h4 class="list_title"><?php echo $value['classname'];?></h4>
+                        <h4 class="list_title <?php echo $value['reminder'];?>"><?php echo $value['classname'];?></h4>
                         <div class="list_date">
                            <span class="year"><?php echo $value['date'];?></span>
                            <span class="time"><?php echo $value['classtime'];?></span>

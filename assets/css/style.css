@@ -888,7 +888,7 @@ hr{
 }
 /*news1*/
 .post .main{
-	padding-bottom: 30px;
+	padding-bottom: 0px;
 }
 .post .list_area{
 	padding: 0;
@@ -1097,7 +1097,7 @@ hr{
 }
 /*studio1*/
 .post .studio_detail .list_row{
-	padding-bottom: 55px;
+	padding-bottom: 0px;
 }
 .studio_detail .list_topic{
 	min-height: 700px;
@@ -1176,7 +1176,7 @@ hr{
 .official_news.collect .list_date{
 	padding: 0 0 0 26px ;
 	line-height: initial;
-	background: url(../img/date.png) no-repeat left 4px;
+	background: url(../img/date.png) no-repeat left 10px;
 }
 /*reminder*/
 .reminder_selection{

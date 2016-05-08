@@ -59,7 +59,7 @@
                   <div class="btn_block">
                      <a class="btn_gray" href="studio1">查看詳情</a>
                      <a class="btn_green" href="">查看地圖</a>
-                     <a class="btn_orange" href="">撥打電話</a>
+                     <a class="btn_orange" href="tel:02-2651-2611">撥打電話</a>
                   </div>
                </div>
             </div>
@@ -76,7 +76,7 @@
                   <div class="btn_block">
                      <a class="btn_gray" href="studio2">查看詳情</a>
                      <a class="btn_green" href="">查看地圖</a>
-                     <a class="btn_orange" href="">撥打電話</a>
+                     <a class="btn_orange" href="tel:02-2836-3171">撥打電話</a>
                   </div>
                </div>
             </div>
@@ -93,7 +93,7 @@
                   <div class="btn_block">
                      <a class="btn_gray" href="studio3">查看詳情</a>
                      <a class="btn_green" href="">查看地圖</a>
-                     <a class="btn_orange" href="">撥打電話</a>
+                     <a class="btn_orange" href="tel:02-2836-3171">撥打電話</a>
                   </div>
                </div>
             </div>

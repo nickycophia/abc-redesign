@@ -61,9 +61,7 @@
       </div>
    </main>
    <footer class="footer">
-      <div class="btn_block filter">
-         <a class="btn_filter" href="studio">撥打電話篩選教室</a>
-      </div>
+      
    </footer>
 </body>
 </html>

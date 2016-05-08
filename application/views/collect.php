@@ -53,7 +53,7 @@
          </div>
       </div>
    </header>
-   <main class="main">
+   <main class="main no_sub-nav">
       <div class="main_content">
          <?php if (count($newsdata) > 0){ ?>
          <div class="mybooking_result list_area">

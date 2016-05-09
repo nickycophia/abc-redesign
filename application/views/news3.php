@@ -54,7 +54,7 @@
                      </p>
                   </div>
                   <div class="btn_block">
-                     <a class="btn_orange post_link" href="https://m.facebook.com/ABC-Cooking-Studio-Taiwan-268307590016516/">前往Facebook粉絲團</a>
+                     <a class="btn_orange post_link" href="">前往Facebook粉絲團</a>
                   </div>
                </div>
             </div>

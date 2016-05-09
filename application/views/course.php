@@ -64,43 +64,57 @@
                <li><a class="disable" href="javascript:;">甜點</a></li>
             </ul>
          </nav>
-         <div class="course_selection">
-            <div class="course_topic">
-               <div class="course_month">4</div>
-               <div class="course_name">日本媽媽家常菜</div>
+         <?php if (count($classdata) == 0) { ?>
+            
+            <div class="unselectable" style="display:block;">
+               <div class="selectclass_null" ><!-- null -->
+                  <div class="null_txt">
+                     <p>預約課程的額度已滿 <br>下個月將會開放新的課程</p>
+                  </div>
+               </div>
             </div>
-            <div class="course_photo" id="coverflow">
-            	<?php
-            	foreach ($classdata as $key => $value) {
-            		echo '<div><img id="coverimg_'.$key.'" src="assets/img/'.$value['pic'].'" data-classno="'.$value['no'].'" data-name="'.$value['name'].'" data-info="'.$classinfo[$value['name']].'" data-month="'.$value['classmonth'].'"></div>';
-            	}
-            	?>
+         
+         <?php } else { ?> 
+            
+            <div class="course_selection">
+               <div class="course_topic">
+                  <div class="course_month">4</div>
+                  <div class="course_name">日本媽媽家常菜</div>
+               </div>
+               <div class="course_photo" id="coverflow">
+               	<?php
+               	foreach ($classdata as $key => $value) {
+               		echo '<img id="coverimg_'.$key.'" src="assets/img/'.$value['pic'].'" data-classno="'.$value['no'].'" data-name="'.$value['name'].'" data-info="'.$classinfo[$value['name']].'" data-month="'.$value['classmonth'].'">';
+               	}
+               	?>
+               </div>
+               <div class="course_detail">
+                  <ul>
+                     <li>大根煮脆雞</li>
+                     <li>雜穀飯</li>
+                     <li>和辛子野菜</li>
+                     <li>野菜味噌湯</li>
+                     <li>簡易草莓大福</li>
+                  </ul>
+               </div>
             </div>
-            <div class="course_detail">
-               <ul>
-                  <li>大根煮脆雞</li>
-                  <li>雜穀飯</li>
-                  <li>和辛子野菜</li>
-                  <li>野菜味噌湯</li>
-                  <li>簡易草莓大福</li>
-               </ul>
+            <div class="studio_selection">
+               <select class="bd4" name="" id="classroom_selection">
+                  <option value="0">選擇上課地點</option>
+                  <option value="1">南港教室</option>
+                  <option value="2">大葉高島屋教室</option>
+                  <option value="3">環球板橋教室</option>
+               </select>
             </div>
-         </div>
-         <div class="studio_selection">
-            <select class="bd4" name="" id="classroom_selection">
-               <option value="0">選擇上課地點</option>
-               <option value="1">南港教室</option>
-               <option value="2">大葉高島屋教室</option>
-               <option value="3">環球板橋教室</option>
-            </select>
-         </div>
-         <form action="selectday" method="get">
-	         <div class="btn_block">
-	            <a id="nextstep" class="btn_orange next" href="javascript:;">下一步</a>
-   				<input id="selected_class" name="selected_class" type="hidden" value="3">
-   				<input id="selected_classroom" name="selected_classroom" type="hidden" value="0">
-	         </div>
-	     </form>
+            <form action="selectday" method="get">
+               <div class="btn_block">
+                  <a id="nextstep" class="btn_orange next" href="javascript:;">下一步</a>
+                  <input id="selected_class" name="selected_class" type="hidden" value="3">
+                  <input id="selected_classroom" name="selected_classroom" type="hidden" value="0">
+               </div>
+           </form>
+         
+         <?php } ?>
       </div>
    </main>
    <footer class="footer">

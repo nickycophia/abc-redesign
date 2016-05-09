@@ -370,6 +370,11 @@ class Abc extends CI_Controller {
 			return;
 		}
 
+		$is_active = '';
+		$teacher_active_display = '不指定';
+		$time_active_display = '不指定';
+		$seat_active_display = '不指定';
+
 		// 課程資料
 		$class_data = array();
 		$class_sql = $this->db->select('*')
@@ -390,6 +395,7 @@ class Abc extends CI_Controller {
 		$teacher_data_tmp = $teacher_sql->result_array();
 		foreach ($teacher_data_tmp as $key => $value) {
 			$teacher_data[$value['no']] = $value['name'];
+			$teacher_active[$value['no']] = '';
 		}
 
 		// 預約資料
@@ -424,18 +430,60 @@ class Abc extends CI_Controller {
 		$this->db->where_in('date', $selected_date);
 
 		// 老師
+		$teacher_active['noselect'] = 'active';
+
 		if ($_GET['selected_teacher'] != '') {
 			$selected_teacher = explode(",", $_GET['selected_teacher']);
 			$this->db->where_in('teacherno', $selected_teacher);
+
+			$teacher_active['noselect'] = '';
+			$teacher_active_name = array();
+			foreach ( $teacher_data as $key => $value) {
+				if (in_array($key, $selected_teacher)) {
+					$teacher_active[$key] = 'active';
+					$teacher_active_name[] = $value;
+				}
+			}
+			$teacher_active_display = implode(",", $teacher_active_name);
+
+			$is_active = 'filtered';
 		}
 		// 時間
+		$time_active['noselect'] = 'active';
+		$time_active['1000'] = '';
+		$time_active['1300'] = '';
+		$time_active['1600'] = '';
+		$time_active['1900'] = '';
+
 		if ($_GET['selected_time']  != '') {
-			$selected_teacher = explode(",", $_GET['selected_time']);
-			$this->db->where_in('classtime', $selected_teacher);
+			$selected_time = explode(",", $_GET['selected_time']);
+			$this->db->where_in('classtime', $selected_time);
+
+			$time_active['noselect'] = '';
+			$time_active_name = array();
+			foreach ($selected_time as $key => $value) {
+				$time_active[$value] = 'active';
+
+				$time_active_name[] = substr_replace($value, ":", 2, 0);
+			}
+			$time_active_display = implode(",", $time_active_name);
+
+			$is_active = 'filtered';
 		}
 		// 座位
+		$seat_active['noselect'] = 'active';
+		$seat_active['0'] = '';
+		$seat_active['1'] = '';
+		$seat_active['2'] = '';
+		$seat_active['3'] = '';
+
 		if ($_GET['selected_seat']  != '') {
 			$this->db->where_in('attender', $_GET['selected_seat']);
+			$seat_active['noselect'] = '';
+			$seat_active[$_GET['selected_seat']] = 'active';
+			$is_active = 'filtered';
+
+			$seat_active_display = 4 - $_GET['selected_seat'];
 		}
 
 		$this->db->order_by('date', 'asc');
@@ -465,6 +513,16 @@ class Abc extends CI_Controller {
 		$data['result'] = $result;
 		$data['result_classname'] = $result_classname;
 		$data['class_booked'] = ($class_booked) ? 'booked' : '';
+		$data['classteacher'] = $teacher_data;
+
+		$data['teacher_active'] = $teacher_active;
+		$data['time_active'] = $time_active;
+		$data['seat_active'] = $seat_active;
+		$data['is_active'] = $is_active;
+
+		$data['teacher_active_display'] = $teacher_active_display;
+		$data['time_active_display'] = $time_active_display;
+		$data['seat_active_display'] = $seat_active_display;
 		$this->load->view('selectclass', $data);
 	}
 
@@ -814,7 +872,9 @@ class Abc extends CI_Controller {
 		if (count($dataArr) > 0) {
 			header("Location: ".base_url());
 		}
-		$this->load->view('login');
+		$redirect = (empty($_GET['redirect']) == true) ? "" : $_GET['redirect'];
+		$data['redirect'] = $redirect;
+		$this->load->view('login', $data);
 	}
 	public function forgetpsw()
 	{

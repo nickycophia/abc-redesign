@@ -59,8 +59,9 @@
          
       </div>
    </main>
-   <footer class="footer">
-   </footer>
+<footer class="footer">
+</footer>
+<input type="hidden" id="redirect" name="redirect" value="<?php echo $redirect;?>">
 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
 <script type="text/javascript">var BASE = '<?php echo base_url();?>';</script>
 <script type="text/javascript" src="assets/js/login.js"></script> 

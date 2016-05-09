@@ -30,7 +30,8 @@ function accountLogin(){
                password:password},
          success:function(data) {
             if( data['status'] == 'success' ) {
-               window.location = BASE;
+               var last_param = $('#redirect').val(); 
+               window.location = BASE + last_param;
             }
             else {
                $('#alertMsg').show();

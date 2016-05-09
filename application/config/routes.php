@@ -103,6 +103,8 @@ $route['abcajax/cancelbooking'] = 'abcajax/cancelbooking';
 $route['abcajax/addreminder'] = 'abcajax/addreminder';
 $route['abcajax/resetmail'] = 'abcajax/resetmail';
 
+$route['abcajax/reselectclass'] = 'abcajax/reselectclass';
+
 $route['404_override'] = '';
 
 // 產生課程表

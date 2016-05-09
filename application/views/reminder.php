@@ -49,8 +49,9 @@
          <div class="studio_selection reminder_selection">
             <select class="bd4" name="reminder_selection" id="reminder_selection">
                <option value="">設定提醒時間</option>
+               <option value="del">不提醒</option>
                <?php foreach ($reminder_dic as $key => $value) {
-                  if ($reminder == $key) { ?>
+                  if ($reminder == $value) { ?>
                      <option value="<?php echo $key;?>" selected="selected"><?php echo $value;?></option>
                   <?php } else { ?>
                      <option value="<?php echo $key;?>"><?php echo $value;?></option>
@@ -60,7 +61,7 @@
          </div>
          <form action="selectday" method="get">
 	         <div class="btn_block">
-	            <a id="reminder_setting" class="btn_orange reminder_setting" href="javascript:;">確定</a>
+               <a id="reminder_setting" class="btn_orange reminder_setting" href="javascript:;">確定</a>
    				</div>
 	     </form>
       </div>

@@ -161,7 +161,7 @@ header{
 .course_photo{
 	width: 100%;
 	height: 320px;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	font-size:0;
 	z-index: 1;
 }
@@ -527,6 +527,8 @@ footer{
 	color: #737373;
 	font-size: 28px;
 	font-family: arial;
+	pointer-events: none;
+    cursor: default;
 }
 .selectclass_result .list_date{
 	font-size: 32px;
@@ -861,7 +863,7 @@ hr{
 	position: absolute;
 	display: block;
 	width: 100%;
-	height: 500px;
+	height: 470px;
 	top: 0;
 	left: 0;
 }
@@ -873,6 +875,7 @@ hr{
 	bottom: 20px;
 	right: 20px;
 	background: url(../img/collection.png) no-repeat right bottom;
+	z-index: 8;
 }
 .collection.active{
 	background: url(../img/collection_hover.png) no-repeat right bottom;
@@ -906,7 +909,7 @@ hr{
 	font-size: 0;
 	padding: 0 0 25px 26px;
 	color: #9b9b9b;
-	background: url(../img/date.png) no-repeat 0px 4px;
+	background: url(../img/date.png) no-repeat 0px 10px;
 	line-height: 1;
 }
 .news_post .list_date .year:after,
@@ -1117,12 +1120,15 @@ hr{
 .studio_detail .tel{
 	font-family: 'PingFangTC-Regular',微軟正黑體;
 	font-size: 28px;
-	color: #737373;
+	color: #737373!important;
+	cursor: default;
+	pointer-events: none;
 }
 .studio_detail .post_txt{
 	border-top: 1px solid #e3e3e3;
 	margin-top: 30px;
 	padding-top: 30px;
+	
 
 }
 .studio_detail .post_txt b,
